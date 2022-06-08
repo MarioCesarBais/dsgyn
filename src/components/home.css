@@ -1,0 +1,32 @@
+#home {
+    display: grid;
+    max-height: 40vh;
+    grid-template-columns: 1fr 35%;
+    grid-template-rows:
+        1fr
+        30%;
+    grid-template-areas:
+        "destaque dcol"
+        "dlin menor";
+}
+
+.texto {
+    text-align: justify;
+    margin: 1rem;
+}
+
+#destaque {
+    grid-area: destaque;
+}
+
+#dcol {
+    grid-area: dcol;
+}
+
+#dlin {
+    grid-area: dlin;
+}
+
+#menor {
+    grid-area: menor;
+}
