@@ -1,7 +1,7 @@
 export default props =>
     <footer className="footer d-flex justify-content-around border border-success p-2 rounded">
         <div>
-            <h6 className="fs-6 my-0 mx-1">
+            <h6 className="my-0 mx-1">
                 Rua 02, Nº 160, Qd. A-17, Lt. 08, Jardim Goiás, 74805-180     Goiânia     GO
             </h6>
             <h6 className="fs-6 my-0 mx-1">Fone (62): 3225-3888 e-mail: sindifisco.go@terra.com.br</h6>

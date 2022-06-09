@@ -2,7 +2,7 @@ import Card from "../layout/Card";
 import eventos from '../data/eventos.json';
 
 export default () => {
-    const maximo = 350
+    const maximo = 300
     const evento = eventos[0] // último evento registrado
     let m = evento.materia.length <= maximo ? evento.materia : `${evento.materia.slice(0, maximo)} ...`
 

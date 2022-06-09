@@ -3,7 +3,7 @@ import noticias from '../data/noticias.json'
 
 
 export default () => {
-    const maximo = 120
+    const maximo = 90
     const noticia = noticias[0] // último noticia registrado
     let m = noticia.materia.length <= maximo ? noticia.materia : `${noticia.materia.slice(0, maximo)} ...`
 

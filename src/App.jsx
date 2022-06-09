@@ -17,7 +17,7 @@ export default _ => (
       <Right />
       <Home />
       {/* <Routes />  */}
-      <Footer />
     </div>
+    <Footer />
   </BrowserRouter>
 )

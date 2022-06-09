@@ -1,13 +1,14 @@
 #home {
     display: grid;
-    max-height: 40vh;
+    max-height: 70vh;
     grid-template-columns: 1fr 35%;
     grid-template-rows:
-        1fr
-        30%;
+        2fr
+        1fr;
     grid-template-areas:
         "destaque dcol"
         "dlin menor";
+    overflow: hidden;
 }
 
 .texto {
