@@ -22,7 +22,7 @@ export default (props) => {
     )
 
     return (
-        <div id='right'>
+        <div id='right' className="pr-5 mr-5">
             <div className="Cards">
                 <Card titulo="Eventos" color="#3A9AD9">
                     <div>{eventosLI}</div>

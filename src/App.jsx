@@ -6,18 +6,20 @@ import Banner from './components/Banner';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Right from './components/Right';
-import Home from './components/Home';
+import Rotas from './components/Routes'
+// import Home from './components/Home';
 
-export default _ => (
+export default _ =>
   <BrowserRouter>
     <div className="app">
       <Logo />
       <Banner />
       <Nav />
       <Right />
-      <Home />
-      {/* <Routes />  */}
+      <div id="content">
+        {/* <Home /> */}
+        <Rotas />
+      </div>
+      <Footer />
     </div>
-    <Footer />
   </BrowserRouter>
-)

@@ -1,5 +1,5 @@
-import Card from "../layout/Card";
-import eventos from '../data/eventos.json';
+import Card from "../../../layout/Card";
+import eventos from '../../../data/eventos.json';
 
 export default () => {
     const maximo = 300

@@ -1,8 +1,8 @@
-import Card from "../layout/Card";
-import noticias from '../data/noticias.json'
+import Card from "../../../layout/Card";
+import noticias from '../../../data/noticias.json'
 
 export default () => {
-    const maximo = 50
+    // const maximo = 50
     const noticia = noticias[1] // último noticia registrado
 
     return (

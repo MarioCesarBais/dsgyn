@@ -1,5 +1,5 @@
-import './home.css'
-import Destaque from "./Destaque";
+import './home.css';
+import Destaque from './Destaque';
 import Dcol from './Dcol';
 import Dlin from './Dlin';
 import Menor from './Menor';

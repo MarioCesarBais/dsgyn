@@ -1,5 +1,5 @@
-import Card from "../layout/Card";
-import noticias from '../data/noticias.json'
+import Card from "../../../layout/Card";
+import noticias from '../../../data/noticias.json'
 
 
 export default () => {
