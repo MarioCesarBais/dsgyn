@@ -1,9 +1,9 @@
 import Card from "../layout/Card";
 import eventos from '../data/eventos.json';
 import noticias from '../data/noticias.json';
-import artigos from '../data/artigos.json'
+import artigos from '../data/artigos.json';
 
-export default (props) => {
+export default () => {
     const eventosLI = eventos.map((evento) =>
         <button className="btn btn-primary btn-sm border border-dark rounded w-100 my-1" key={evento.manchete}>
             {evento.manchete}
@@ -22,7 +22,7 @@ export default (props) => {
     )
 
     return (
-        <div id='right' className="pr-5 mr-5">
+        <div id='right'>
             <div className="Cards">
                 <Card titulo="Eventos" color="#3A9AD9">
                     <div>{eventosLI}</div>
@@ -39,5 +39,5 @@ export default (props) => {
                 </Card>
             </div>
         </div>
-    );
+    )
 };
