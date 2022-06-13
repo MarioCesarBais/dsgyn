@@ -10,5 +10,7 @@ export default () =>
     <div className="Cards">
         <Card titulo="Notícias" color="#3A9AD9">
             <div>{noticiasLI}</div>
+            <button className="btn btn-primary btn-sm border border-dark rounded w-100 my-1">
+                        Mais Notícias</button>
         </Card>
     </div>

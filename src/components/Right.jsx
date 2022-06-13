@@ -26,16 +26,22 @@ export default () => {
             <div className="Cards">
                 <Card titulo="Eventos" color="#3A9AD9">
                     <div>{eventosLI}</div>
+                    <button className="btn btn-primary btn-sm border border-dark rounded w-100 my-1">
+                        Mais Eventos</button>
                 </Card>
             </div>
             <div className="Cards">
                 <Card titulo="Notícias" color="#3A9AD9">
                     <div>{noticiasLI}</div>
+                    <button className="btn btn-primary btn-sm border border-dark rounded w-100 my-1">
+                        Mais Notícias</button>
                 </Card>
             </div>
             <div className="Cards">
                 <Card titulo="Artigos" color="#3A9AD9">
                     <div>{artigosLI}</div>
+                    <button className="btn btn-primary btn-sm border border-dark rounded w-100 my-1">
+                        Mais Artigos</button>
                 </Card>
             </div>
         </div>

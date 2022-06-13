@@ -16,7 +16,7 @@ export default _ =>
       <Banner />
       <Nav />
       <Right />
-      <div id="content">
+      <div className="content">
         {/* <Home /> */}
         <Rotas />
       </div>

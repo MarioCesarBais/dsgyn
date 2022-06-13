@@ -12,11 +12,11 @@ export default props =>
             <Link to="/">
                 <i className="fa fa-home"></i> Início
             </Link>
-            <Link to="/noticias"> 
-                <FontAwesomeIcon icon={faPaperPlane} /> Notícias
-            </Link>
             <Link to="/eventos"> 
                 <FontAwesomeIcon icon={faCalendarDays} /> Eventos
+            </Link>
+            <Link to="/noticias"> 
+                <FontAwesomeIcon icon={faPaperPlane} /> Notícias
             </Link>
             <Link to="/documentos"> 
                 <FontAwesomeIcon icon={faFileLines} /> Documentos
