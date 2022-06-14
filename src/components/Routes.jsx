@@ -5,6 +5,7 @@ import Artigos from '../components/content/Artigos'
 import Eventos from './content/Eventos'
 import Noticias from './content/Noticias'
 import Documentos from './content/Documentos'
+import Mat from './content/Mat'
 
 export default props =>
     <Routes>
@@ -13,6 +14,7 @@ export default props =>
         <Route path='/eventos' element={<Eventos />} />
         <Route path='/noticias' element={<Noticias />} />
         <Route path='/documentos' element={<Documentos />} />
+        <Route path='/mat' element={<Mat />} />
         {/* <Route path='/quemsomos' element={<QuemSomos />} /> */}
         <Route path="*" element={<Navigate replace to="/" />} />
     </Routes>

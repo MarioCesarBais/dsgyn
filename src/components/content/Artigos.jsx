@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import artigos from '../../data/artigos.json'
 import Card from '../../layout/Card'
 import RenderItem from './RenderItem'
@@ -16,10 +17,13 @@ import RenderItem from './RenderItem'
 //   }
 
 const artigosLI = artigos.map(artigo =>
-    <button className="btn btn-primary btn-sm border border-dark rounded w-100 my-1" key={artigo.manchete}
-        onClick={() => new RenderItem(artigo)}>
-        {artigo.manchete}
-    </button>
+    // <button className="btn btn-primary btn-sm border border-dark rounded w-100 my-1" key={artigo.manchete}
+    //     onClick={() => {
+    //         console.log('cliquei!')
+    //         console.log(new RenderItem(artigo))}}>
+    //     {artigo.manchete}
+    // </button>
+    <Link to="/mat" state={artigo} key={artigo.manchete}>{artigo.data} --- {artigo.manchete}</Link>
 )
   
 

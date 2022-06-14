@@ -2,11 +2,14 @@ import { Component } from "react";
 import Card from "../../layout/Card";
 
 export default class RenderItem extends Component {
+  constructor(props) {
+    super(props)
+    console.log(props)
+  }
   render() {
-    console.log('entrei!')
     return (
       <div className="content">
-        Artigo
+        {this.props}
         {/* <Card titulo={props.mancehete}>
           {props.data}
           <br></br>
