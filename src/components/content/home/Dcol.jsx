@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import Card from "../../../layout/Card";
 import noticias from '../../../data/noticias.json'
 
@@ -13,7 +15,7 @@ export default () => {
                 <div>
                     <p className='texto'>
                         {noticia.data} - {m}
-                        <button className='btn btn-primary btn-sm'>ler mais</button>
+                        <Link to="/mat" state={noticia}>ler mais ...</Link>
                     </p>
                 </div>
             </Card>

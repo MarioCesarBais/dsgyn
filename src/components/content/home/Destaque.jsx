@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import Card from "../../../layout/Card";
 import eventos from '../../../data/eventos.json';
 
@@ -12,7 +14,7 @@ export default () => {
                 <div>
                     <p className='texto'>
                         {evento.data} - {m}
-                        <button className='btn btn-primary btn-sm'>ler mais</button>
+                        <Link to="/mat" state={evento}>ler mais ...</Link>
                     </p>
                 </div>
             </Card>

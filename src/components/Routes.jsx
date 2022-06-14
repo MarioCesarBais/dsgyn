@@ -7,6 +7,9 @@ import Noticias from './content/Noticias'
 import Documentos from './content/Documentos'
 import Mat from './content/Mat'
 
+// const paths = { '/artigos': <Artigos />, '/eventos': <Eventos />, '/noticias': <Noticias /> }
+// const routesG = Object.entries(paths).map(e => <Route key={e.keys} path={e.keys} element={e.values} />)
+
 export default props =>
     <Routes>
         <Route path='/' element={<Home />} />
