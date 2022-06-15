@@ -12,7 +12,7 @@ const noticiasLI = noticias.map(noticia =>
 
 export default () =>
     <div className="Cards">
-        <Card titulo="noticias" color="#3A9AD9">
+        <Card titulo="Notícias" color="#3A9AD9">
             <div>{noticiasLI}</div>
             <Link to="/noticias">Mais noticias</Link>
         </Card>
