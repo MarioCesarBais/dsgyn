@@ -7,8 +7,6 @@ import Noticias from './content/Noticias'
 import Documentos from './content/Documentos'
 import Mat from './content/Mat'
 
-// const paths = { '/artigos': <Artigos />, '/eventos': <Eventos />, '/noticias': <Noticias /> }
-// const routesG = Object.entries(paths).map(e => <Route key={e.keys} path={e.keys} element={e.values} />)
 
 export default props =>
     <Routes>
@@ -18,6 +16,5 @@ export default props =>
         <Route path='/noticias' element={<Noticias />} />
         <Route path='/documentos' element={<Documentos />} />
         <Route path='/mat' element={<Mat />} />
-        {/* <Route path='/quemsomos' element={<QuemSomos />} /> */}
         <Route path="*" element={<Navigate replace to="/" />} />
     </Routes>
