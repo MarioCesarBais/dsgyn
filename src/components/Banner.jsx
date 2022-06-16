@@ -1,10 +1,21 @@
-import dsgyn from '../imgs/sedepaisagem.jpg';
-import sedeDRF from "../imgs/protesto.jpg";
-import aeroporto from '../imgs/aeroporto.jpg'
+import "./banner.css";
+// import Typed from "typed.js";
+// import dsgyn from "../imgs/sedepaisagem.jpg";
+// import sedeDRF from "../imgs/protesto.jpg";
+// import aeroporto from "../imgs/aeroporto.jpg";
 
-export default _ =>
-<div id='banner' className='d-flex justify-content-evenly'>
-    <img src={dsgyn} alt="frente sede DS Goiânia" />
-    <img src={sedeDRF} alt="sede da DRF" />
-    <img src={aeroporto} alt="Aeroporto Goiânia" />
-</div>
+// const loadDynamicBannerText = () => {
+//   new Typed("#banner-text", {
+//     strings: [
+//       "Mude o tom de sua vida:",
+//       "DNA: Básico e Avançado, Digging, Constelação Familiar",
+//     ],
+//     typeSpeed: 50,
+//     loop: true,
+//   });
+// };
+
+export default (_) => (
+  // document.addEventListener('turbolinks:load', () => {loadDynamicBannerText()})
+  <div id="banner"></div>
+);
