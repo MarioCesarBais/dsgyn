@@ -3,14 +3,8 @@ import { Link } from "react-router-dom";
 import eventos from "../../data/eventos.json";
 import Card from "../../layout/Card";
 
-export default (props) => {
-  if (props.n === 3) {
-    console.log(props)
-    if (eventos.length > 3) {
-      eventos = eventos.slice(eventos.length - 4, eventos.length);
-    }
-  }
-  const eventosLI = eventos.reverse().map((evento) => (
+export default () => {
+  const eventosLI = eventos.slice(0).reverse().map((evento) => (
     <div className="border border-dark rounded w-100 p-1 m-1">
       <Link to="/mat" state={evento} key={Math.random()}>
         {evento.data} --- {evento.manchete}

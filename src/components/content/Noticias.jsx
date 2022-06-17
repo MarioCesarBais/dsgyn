@@ -3,13 +3,9 @@ import { Link } from "react-router-dom";
 import noticias from "../../data/noticias.json";
 import Card from "../../layout/Card";
 
-export default (props) => {
-  if (props.n === 3) {
-    if (noticias.length > 3) {
-      noticias = noticias.slice(-4, -1);
-    }
-  }
-  const noticiasLI = noticias.reverse().map((noticia) => (
+export default () => {
+
+  const noticiasLI = noticias.slice(0).reverse().map((noticia) => (
     <div className="border border-dark rounded w-100 p-1 m-1">
       <Link to="/mat" state={noticia} key={Math.random()}>
         {noticia.data} --- {noticia.manchete}

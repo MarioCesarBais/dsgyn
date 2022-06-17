@@ -5,8 +5,8 @@ import eventos from '../../../data/eventos.json'
 
 
 export default () => {
-    const maximo = 200
-    const evento = eventos[1] // último evento registrado
+    const maximo = 300
+    const evento = eventos[eventos.length - 2] // penúltimo evento registrado
     let m = evento.materia.length <= maximo ? evento.materia : `${evento.materia.slice(0, maximo)} ...`
 
     return (

@@ -3,12 +3,12 @@
     border-radius: 10px;
     overflow: hidden;
     margin: 3px;
-
     display: flex;
     flex-direction: column;
 }
 
 .Card .Title {
+    height: 2rem;
     padding: 5px 0px;
     display: flex;
     justify-content: center;

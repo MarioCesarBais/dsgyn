@@ -33,7 +33,7 @@
   grid-template-areas:
     "logo banner right"
     "menu content right"
-    "footer footer footer";
+    "footer footer right";
   background: linear-gradient(135deg, white, black);
 }
 
@@ -59,6 +59,10 @@ aside.menu-area {
 
 #right {
   grid-area: right;
+}
+
+#right > .Cards > .Card > .Content {
+  max-height: 33vh;
 }
 
 footer {

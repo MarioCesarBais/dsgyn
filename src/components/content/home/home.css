@@ -9,6 +9,8 @@
         "destaque dcol"
         "dlin menor";
     overflow: hidden;
+    /* align-items: stretch; */
+    justify-items: stretch;
 }
 
 .texto {
@@ -18,16 +20,29 @@
 
 #destaque {
     grid-area: destaque;
+    max-height: 1fr;
+    min-height: 1fr;
 }
 
 #dcol {
     grid-area: dcol;
+    height: 1fr;
+    max-height: 1fr;
+    min-height: 1fr;
 }
 
 #dlin {
     grid-area: dlin;
+    max-height: 1fr;
+    min-height: 1fr;
 }
 
 #menor {
     grid-area: menor;
+    max-height: 1fr;
+    min-height: 1fr;
+}
+
+#home .Cards .Content .texto {
+    height: 7rem;
 }
