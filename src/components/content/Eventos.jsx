@@ -3,7 +3,14 @@ import { Link } from "react-router-dom";
 import eventos from "../../data/eventos.json";
 import Card from "../../layout/Card";
 
-const eventosLI = eventos.map((evento) => (
+export default (props) => {
+  if (props.n === 3) {
+    console.log(props)
+    if (eventos.length > 3) {
+      eventos = eventos.slice(eventos.length - 4, eventos.length);
+    }
+  }
+  const eventosLI = eventos.reverse().map((evento) => (
     <div className="border border-dark rounded w-100 p-1 m-1">
       <Link to="/mat" state={evento} key={Math.random()}>
         {evento.data} --- {evento.manchete}
@@ -11,11 +18,12 @@ const eventosLI = eventos.map((evento) => (
     </div>
   ));
 
-export default (props) =>
+  return (
     <div className="Cards">
       <Card titulo="Eventos" color="#3A9AD9" key={Math.random()}>
         <div>{eventosLI}</div>
-        <Link key={Math.random()}
+        <Link
+          key={Math.random()}
           to="/eventos"
           className="border border-dark rounded w-100 p-1 m-1"
         >
@@ -23,3 +31,5 @@ export default (props) =>
         </Link>
       </Card>
     </div>
+  );
+};

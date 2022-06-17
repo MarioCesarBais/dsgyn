@@ -4,7 +4,7 @@ import Noticias from "./content/Noticias";
 
 export default () =>
     <div id='right'>
-        <Eventos />
-        <Noticias />
-        <Artigos />
+        <Eventos n={3} />
+        <Noticias n={3} />
+        <Artigos n={3} />
     </div>

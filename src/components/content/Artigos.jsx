@@ -2,7 +2,13 @@ import { Link } from "react-router-dom";
 import artigos from "../../data/artigos.json";
 import Card from "../../layout/Card";
 
-const artigosLI = artigos.map((artigo) => (
+export default (props) => {
+  if (props.n === 3) {
+    if (artigos.length > 3) {
+      artigos = artigos.slice(-4, -1);
+    }
+  }
+  const artigosLI = artigos.reverse().map((artigo) => (
     <div className="border border-dark rounded w-100 p-1 m-1">
       <Link to="/mat" state={artigo} key={Math.random()}>
         {artigo.data} --- {artigo.manchete}
@@ -10,11 +16,12 @@ const artigosLI = artigos.map((artigo) => (
     </div>
   ));
 
-export default () =>
+  return (
     <div className="Cards">
       <Card titulo="Artigos" color="#3A9AD9" key={Math.random()}>
         <div>{artigosLI}</div>
-        <Link key={Math.random()}
+        <Link
+          key={Math.random()}
           to="/artigos"
           className="border border-dark rounded w-100 p-1 m-1"
         >
@@ -22,3 +29,5 @@ export default () =>
         </Link>
       </Card>
     </div>
+  );
+};
