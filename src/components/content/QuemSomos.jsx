@@ -30,6 +30,7 @@ export default () =>
         <p>1º Diretor Suplente – JOSE DIAS BASTOS</p>
         <p>2º Diretor Suplente – VIVIAN MONTIJO SALVIANO</p>
         <p className='pb-5'>3º Diretor Suplente – MARIA CONCEICAO CARDOZO MESQUITA</p>
+        <h1>Nossa História</h1>
+        <p>Na década de 90, a DS ocupava pequena sala gentilmente cedida pela administração tributária local, no prédio alugado na Avenida Professor Alfredo de Castro, no Setor Oeste, atualmente ocupado pela Procuradoria da Fazenda Nacional. Visando melhor atender aos filiados, a DS alugou sala na Galeria Compu Plaza durante a década 2000 e adquiriu mobiliário próprio. Antevendo a mudança da Delegacia da Receita Federal para a Avenida Fued José Sebba, a DS resolveu adquirir, nas proximidades, casa velha no Jardim Goiás pelo valor de R$ 190.000,00, correspondente ao lote de terreno. Foi necessária a demolição e nova construção a partir do zero. Nossa sede acolhedora, como a conhecemos hoje, é palco de nossas assembleias e eventos sociais.</p>
         <h1>Galeria de ex-Presidentes da DS</h1>
-        
     </div>
