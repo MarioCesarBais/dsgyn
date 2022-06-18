@@ -1,11 +1,9 @@
-// export default props => {
-//     switch(props)
-//         {
-//             case 'artigos':
-//                 import artigos from '../data/artigos.json'
-//                 return artigos;
-//             // default:
-//             //     import noticias from '../data/noticias.json'
-//             //     return noticias
-//         }
-// }
+export function showhide(e) {
+    e.target.innerText = e.target.innerText === 'Mostrar' ? 'Esconder' : 'Mostrar'
+    const cl = e.target.classList
+    const nat = cl[cl.length -1]
+    const el = document.querySelectorAll(`.${nat} > *`)
+    el.forEach(ele => {
+        ele.style.display = ele.style.display ? '' : 'none'
+    })
+}

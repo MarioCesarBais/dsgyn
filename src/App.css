@@ -32,7 +32,7 @@
   grid-template-areas:
     "logo banner right"
     "menu content right"
-    "footer footer right";
+    "footer footer footer";
   background: linear-gradient(135deg, white, black);
 }
 
