@@ -17,7 +17,7 @@ const TypedReactHooksDemo = () => {
         'O Auditor-Fiscal defende a justiça social!'
       ],
       typeSpeed: 50,
-      backSpeed: 50,
+      backSpeed: 1,
       showCursor: false,
       loop: true,
       loopCount: 1000

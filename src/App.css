@@ -1,6 +1,5 @@
 :root {
   --bg-dark: rgb(32, 22, 22);
-  /* --bg-light: rgb(241, 241, 106); */
   --bg-light: rgb(241, 241, 119);
   --bg-footer:  lightgreen;
 
@@ -68,7 +67,10 @@ aside.menu-area {
 footer {
   grid-area: footer;
   background-color: var(--bg-footer);
+  overflow: hidden;
 }
+
+a:hover { background-color: aqua;}
 
 @media (max-width: 950px) {
   #right {

@@ -17,13 +17,6 @@ export default () => {
     <div className="Cards">
       <Card titulo="Notícias" color="#3A9AD9" key={Math.random()}>
         <div>{noticiasLI}</div>
-        <Link
-          key={Math.random()}
-          to="/noticias"
-          className="border border-dark rounded w-100 p-1 m-1"
-        >
-          Mais noticias
-        </Link>
       </Card>
     </div>
   );
