@@ -7,6 +7,7 @@ import Noticias from './content/Noticias'
 import Documentos from './content/Documentos'
 import Mat from './content/Mat'
 import QuemSomos from './content/QuemSomos'
+import CRUD from './content/crud/Crud'
 
 
 export default props =>
@@ -18,5 +19,6 @@ export default props =>
         <Route path='/documentos' element={<Documentos />} />
         <Route path='/mat' element={<Mat />} />
         <Route path='/quemsomos' element={<QuemSomos />} />
+        <Route path='/crud' element={<CRUD />} />
         <Route path="*" element={<Navigate replace to="/" />} />
     </Routes>

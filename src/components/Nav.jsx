@@ -26,5 +26,6 @@ export default props =>
             <Link to="/quemsomos">
                 <FontAwesomeIcon icon={faAddressCard} /> Quem Somos
             </Link>
+            <Link to='/crud'>CRUD</Link>
         </nav>
     </aside>
