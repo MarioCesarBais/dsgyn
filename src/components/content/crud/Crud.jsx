@@ -45,6 +45,16 @@ export default class UserCrud extends Component {
     //         this.setState({ user: initialState.user, list })
     //     })
     console.log(evento);
+    eventos.push(evento);
+    const fs = require("fs");
+    fs.writeFile("./eventos.json", "Hey there!", function(err) {
+            if(err) {
+                console.log(err);
+            } else {
+                console.log("The file was saved!");
+            }
+        }
+    )
   }
 
   getUpdatedList(user, add = true) {
@@ -92,7 +102,7 @@ export default class UserCrud extends Component {
           </div>
         </div>
         <div className="row">
-        <div className="col-12">
+          <div className="col-12">
             <div className="form-group">
               <label>Matéria</label>
               <input
@@ -161,7 +171,10 @@ export default class UserCrud extends Component {
           <td>{evento.manchete}</td>
           <td>{evento.data}</td>
           <td>
-            <button className="btn btn-warning" onClick={() => this.load(evento)}>
+            <button
+              className="btn btn-warning"
+              onClick={() => this.load(evento)}
+            >
               <i className="fa fa-pencil"></i>
             </button>
             <button
