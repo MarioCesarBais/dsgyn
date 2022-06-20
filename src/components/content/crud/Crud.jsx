@@ -1,4 +1,5 @@
 import { Component } from "react";
+// import { writeFile } from 'node:fs';
 // import axios from 'axios'
 
 import Main from "../../template/Main";
@@ -21,7 +22,7 @@ const initialState = {
   list: eventos,
 };
 
-export default class UserCrud extends Component {
+export default class Crud extends Component {
   state = { ...initialState };
 
   // componentWillMount() {
@@ -46,15 +47,16 @@ export default class UserCrud extends Component {
     //     })
     console.log(evento);
     eventos.push(evento);
-    const fs = require("fs");
-    fs.writeFile("./eventos.json", "Hey there!", function(err) {
-            if(err) {
-                console.log(err);
-            } else {
-                console.log("The file was saved!");
-            }
-        }
-    )
+    let fs = require("fs");
+    fs.writeFileSync("./eventos.json", "Hey there!")
+    // , function(err) {
+    //         if(err) {
+    //             console.log(err);
+    //         } else {
+    //             console.log("The file was saved!");
+    //         }
+    //     }
+    // )
   }
 
   getUpdatedList(user, add = true) {
@@ -64,9 +66,9 @@ export default class UserCrud extends Component {
   }
 
   updateField(event) {
-    const user = { ...this.state.user };
-    user[event.target.name] = event.target.value;
-    this.setState({ user });
+    const evento = { ...this.state.evento };
+    evento[event.target.name] = event.target.value;
+    this.setState({ evento });
   }
 
   renderForm() {
@@ -91,8 +93,10 @@ export default class UserCrud extends Component {
             <div className="form-group">
               <label>Data</label>
               <input
-                type="date"
+                type="date-local"
                 className="form-control"
+                data-date=""
+                data-date-format="DD/MM/YYYY"
                 name="data"
                 value={this.state.evento.data}
                 onChange={(e) => this.updateField(e)}
@@ -120,7 +124,7 @@ export default class UserCrud extends Component {
         <hr />
         <div className="row">
           <div className="col-12 d-flex justify-content-end">
-            <button className="btn btn-primary" onClick={(e) => this.save(e)}>
+            <button className="btn btn-primary mx-1" onClick={(e) => this.save(e)}>
               Salvar
             </button>
 
@@ -153,9 +157,9 @@ export default class UserCrud extends Component {
         <thead>
           <tr>
             {/* <th>ID</th> */}
-            <th>Manchete</th>
-            <th>Data</th>
-            <th>Ações</th>
+            <th key='manchete'>Manchete</th>
+            <th key='data'>Data</th>
+            <th key='acoes'>Ações</th>
           </tr>
         </thead>
         <tbody>{this.renderRows()}</tbody>
@@ -166,19 +170,19 @@ export default class UserCrud extends Component {
   renderRows() {
     return this.state.list.map((evento) => {
       return (
-        <tr key={evento.id}>
+        <tr key={evento.manchete}>
           {/* <td>{user.id}</td> */}
           <td>{evento.manchete}</td>
           <td>{evento.data}</td>
           <td>
             <button
-              className="btn btn-warning"
+              className="btn btn-warning mx-1"
               onClick={() => this.load(evento)}
             >
               <i className="fa fa-pencil"></i>
             </button>
             <button
-              className="btn btn-danger ml-2"
+              className="btn btn-danger"
               onClick={() => this.remove(evento)}
             >
               <i className="fa fa-trash"></i>

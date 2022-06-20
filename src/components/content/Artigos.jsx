@@ -5,8 +5,8 @@ import Card from "../../layout/Card";
 export default () => {
 
   const artigosLI = artigos.slice(0).reverse().map((artigo) => (
-    <div className="border border-dark rounded w-100 p-1 m-1">
-      <Link to="/mat" state={artigo} key={Math.random()}>
+    <div className="border border-dark rounded w-100 p-1 m-1" key={Math.random()}>
+      <Link to="/mat" state={artigo}>
         {artigo.data} --- {artigo.manchete}
       </Link>
     </div>
