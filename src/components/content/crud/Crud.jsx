@@ -1,35 +1,36 @@
 import { Component } from "react";
-// import { writeFile } from 'node:fs';
-// import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faNewspaper, faPaperPlane, faAddressCard, faCalendarDays, faFileLines } from '@fortawesome/free-solid-svg-icons'
+import axios from 'axios'
 
 import Main from "../../template/Main";
 
-import artigos from "../../../data/artigos.json";
-import eventos from "../../../data/eventos.json";
-import noticias from "../../../data/noticias.json";
+// import artigos from "../../../data/artigos.json";
+// import eventos from "../../../data/eventos.json";
+// import noticias from "../../../data/noticias.json";
 
 const headerProps = {
-  icon: "events",
+  icon: <FontAwesomeIcon icon={faCalendarDays} />,
   title: "Eventos",
   subtitle:
     "Cadastro de eventos, notícias e artigos: Incluir, Listar, Alterar e Excluir!",
 };
 
-// const baseUrl = 'http://localhost:3001/users'
+const baseUrl = 'http://localhost:3001/eventos'
 const ini = { manchete: "", data: "", materia: "" };
 const initialState = {
   evento: ini,
-  list: eventos,
+  list: [],
 };
 
 export default class Crud extends Component {
   state = { ...initialState };
 
-  // componentWillMount() {
-  //     axios(baseUrl).then(resp => {
-  //         this.setState({ list: resp.data })
-  //     })
-  // }
+  componentWillMount() {
+      axios(baseUrl).then(resp => {
+          this.setState({ list: resp.data })
+      })
+  }
 
   clear() {
     this.setState({ evento: initialState.evento });
@@ -37,31 +38,20 @@ export default class Crud extends Component {
 
   save() {
     const evento = this.state.evento;
-    // const method = evento.id ? 'put' : 'post' --> substituir por método capaz de identificar se se trata
-    // de salvar novo registro ou atualizá-lo
-    // const url = user.id ? `${baseUrl}/${user.id}` : baseUrl
-    // axios[method](url, user)
-    //     .then(resp => {
-    //         const list = this.getUpdatedList(resp.data)
-    //         this.setState({ user: initialState.user, list })
-    //     })
-    console.log(evento);
-    eventos.push(evento);
-    let fs = require("fs");
-    fs.writeFileSync("./eventos.json", "Hey there!")
-    // , function(err) {
-    //         if(err) {
-    //             console.log(err);
-    //         } else {
-    //             console.log("The file was saved!");
-    //         }
-    //     }
-    // )
+    const method = evento.id ? 'put' : 'post' //identificar se se trata de salvar novo registro ou atualizá-lo
+    const url = evento.id ? `${baseUrl}/${evento.id}` : baseUrl
+    axios[method](url, evento)
+        .then(resp => {
+            const list = this.getUpdatedList(resp.data)
+            this.setState({ evento: initialState.evento, list })
+        })
+    // console.log(evento);
+    // eventos.push(evento);
   }
 
-  getUpdatedList(user, add = true) {
-    const list = this.state.list.filter((u) => u.id !== user.id);
-    if (add) list.unshift(user);
+  getUpdatedList(evento, add = true) {
+    const list = this.state.list.filter((e) => e.id !== evento.id);
+    if (add) list.unshift(evento);
     return list;
   }
 
@@ -129,7 +119,7 @@ export default class Crud extends Component {
             </button>
 
             <button
-              className="btn btn-secondary ml-2"
+              className="btn btn-secondary"
               onClick={(e) => this.clear(e)}
             >
               Cancelar
@@ -144,19 +134,19 @@ export default class Crud extends Component {
     this.setState({ evento });
   }
 
-  // remove(user) {
-  //     axios.delete(`${baseUrl}/${user.id}`).then(resp => {
-  //         const list = this.getUpdatedList(user, false)
-  //         this.setState({ list })
-  //     })
-  // }
+  remove(evento) {
+      axios.delete(`${baseUrl}/${evento.id}`).then(resp => {
+          const list = this.getUpdatedList(evento, false)
+          this.setState({ list })
+      })
+  }
 
   renderTable() {
     return (
       <table className="table mt-4">
         <thead>
           <tr>
-            {/* <th>ID</th> */}
+            <th>ID</th>
             <th key='manchete'>Manchete</th>
             <th key='data'>Data</th>
             <th key='acoes'>Ações</th>
@@ -171,7 +161,7 @@ export default class Crud extends Component {
     return this.state.list.map((evento) => {
       return (
         <tr key={evento.manchete}>
-          {/* <td>{user.id}</td> */}
+          <td>{evento.id}</td>
           <td>{evento.manchete}</td>
           <td>{evento.data}</td>
           <td>

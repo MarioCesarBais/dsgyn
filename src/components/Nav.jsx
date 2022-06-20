@@ -11,7 +11,7 @@ export default props =>
             <Link to="/">
                 <i className="fa fa-home"></i> Início
             </Link>
-            <Link to="/eventos" n={Infinity}> 
+            <Link to="/eventos"> 
                 <FontAwesomeIcon icon={faCalendarDays} /> Eventos
             </Link>
             <Link to="/noticias"> 
