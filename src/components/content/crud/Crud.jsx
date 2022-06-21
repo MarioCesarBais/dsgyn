@@ -1,13 +1,17 @@
-import { Component } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faNewspaper, faPaperPlane, faAddressCard, faCalendarDays, faFileLines } from '@fortawesome/free-solid-svg-icons'
-import axios from 'axios'
+import { Component, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faNewspaper,
+  faPaperPlane,
+  faAddressCard,
+  faCalendarDays,
+  faFileLines,
+} from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+// import DatePicker from "react-datepicker";
 
 import Main from "../../template/Main";
-
-// import artigos from "../../../data/artigos.json";
-// import eventos from "../../../data/eventos.json";
-// import noticias from "../../../data/noticias.json";
+// import "react-datepicker/dist/react-datepicker.css";
 
 const headerProps = {
   icon: <FontAwesomeIcon icon={faCalendarDays} />,
@@ -16,8 +20,8 @@ const headerProps = {
     "Cadastro de eventos, notícias e artigos: Incluir, Listar, Alterar e Excluir!",
 };
 
-const baseUrl = 'http://localhost:3001/eventos'
-const ini = { manchete: "", data: "", materia: "" };
+const baseUrl = "http://localhost:3001/eventos";
+const ini = { manchete: "", data: "", materia: "", datepicker: "" };
 const initialState = {
   evento: ini,
   list: [],
@@ -27,9 +31,9 @@ export default class Crud extends Component {
   state = { ...initialState };
 
   componentWillMount() {
-      axios(baseUrl).then(resp => {
-          this.setState({ list: resp.data })
-      })
+    axios(baseUrl).then((resp) => {
+      this.setState({ list: resp.data });
+    });
   }
 
   clear() {
@@ -38,15 +42,12 @@ export default class Crud extends Component {
 
   save() {
     const evento = this.state.evento;
-    const method = evento.id ? 'put' : 'post' //identificar se se trata de salvar novo registro ou atualizá-lo
-    const url = evento.id ? `${baseUrl}/${evento.id}` : baseUrl
-    axios[method](url, evento)
-        .then(resp => {
-            const list = this.getUpdatedList(resp.data)
-            this.setState({ evento: initialState.evento, list })
-        })
-    // console.log(evento);
-    // eventos.push(evento);
+    const method = evento.id ? "put" : "post"; //identificar se se trata de salvar novo registro ou atualizá-lo
+    const url = evento.id ? `${baseUrl}/${evento.id}` : baseUrl;
+    axios[method](url, evento).then((resp) => {
+      const list = this.getUpdatedList(resp.data);
+      this.setState({ evento: initialState.evento, list });
+    });
   }
 
   getUpdatedList(evento, add = true) {
@@ -60,6 +61,8 @@ export default class Crud extends Component {
     evento[event.target.name] = event.target.value;
     this.setState({ evento });
   }
+
+  formatDate = string => string.length === 10 ? `${string.slice(8,10)}/${string.slice(5,7)}/${string.slice(0,4)}` : ''
 
   renderForm() {
     return (
@@ -83,9 +86,11 @@ export default class Crud extends Component {
             <div className="form-group">
               <label>Data</label>
               <input
-                type="date-local"
+              html5='true'
+                as='date'
+                type="date"
                 className="form-control"
-                data-date=""
+                // data-date=""
                 data-date-format="DD/MM/YYYY"
                 name="data"
                 value={this.state.evento.data}
@@ -95,6 +100,26 @@ export default class Crud extends Component {
             </div>
           </div>
         </div>
+        {/* <div className="row"> */}
+          {/* <div className="col-6"> */}
+            {/* <DatePicker
+              type="date-local"
+              local="br"
+              selected={this.state.evento.datepicker}
+              onChange={(e) => {
+                console.log(e);
+                // this.updateField(e)
+              }}
+              className="form-field"
+              id="data"
+              placeholder="Digite a data..."
+              name="datepicker"
+            /> */}
+          {/* </div> */}
+          {/* <label className="col-6">Data:</label>
+          <input as="date" html5="true" type="date" name="data-ruby" id="data-ruby"></input>
+          </div> */}
+        {/* </div> */}
         <div className="row">
           <div className="col-12">
             <div className="form-group">
@@ -102,7 +127,7 @@ export default class Crud extends Component {
               <input
                 type="text"
                 className="form-control"
-                name="data"
+                name="materia"
                 value={this.state.evento.materia}
                 onChange={(e) => this.updateField(e)}
                 placeholder="Digite a matéria..."
@@ -114,7 +139,10 @@ export default class Crud extends Component {
         <hr />
         <div className="row">
           <div className="col-12 d-flex justify-content-end">
-            <button className="btn btn-primary mx-1" onClick={(e) => this.save(e)}>
+            <button
+              className="btn btn-primary mx-1"
+              onClick={(e) => this.save(e)}
+            >
               Salvar
             </button>
 
@@ -135,10 +163,10 @@ export default class Crud extends Component {
   }
 
   remove(evento) {
-      axios.delete(`${baseUrl}/${evento.id}`).then(resp => {
-          const list = this.getUpdatedList(evento, false)
-          this.setState({ list })
-      })
+    axios.delete(`${baseUrl}/${evento.id}`).then((resp) => {
+      const list = this.getUpdatedList(evento, false);
+      this.setState({ list });
+    });
   }
 
   renderTable() {
@@ -147,9 +175,9 @@ export default class Crud extends Component {
         <thead>
           <tr>
             <th>ID</th>
-            <th key='manchete'>Manchete</th>
-            <th key='data'>Data</th>
-            <th key='acoes'>Ações</th>
+            <th key="manchete">Manchete</th>
+            <th key="data">Data</th>
+            <th key="acoes">Ações</th>
           </tr>
         </thead>
         <tbody>{this.renderRows()}</tbody>
@@ -163,7 +191,8 @@ export default class Crud extends Component {
         <tr key={evento.manchete}>
           <td>{evento.id}</td>
           <td>{evento.manchete}</td>
-          <td>{evento.data}</td>
+          {/* <td>{typeof(evento.data)}</td> */}
+          <td>{this.formatDate(evento.data)}</td>
           <td>
             <button
               className="btn btn-warning mx-1"
