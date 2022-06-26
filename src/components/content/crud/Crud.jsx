@@ -1,4 +1,4 @@
-import { Component, useState } from "react";
+import { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faNewspaper,
@@ -8,10 +8,10 @@ import {
   faFileLines,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-// import DatePicker from "react-datepicker";
 
 import Main from "../../template/Main";
-// import "react-datepicker/dist/react-datepicker.css";
+
+import { baseUrl, initialState } from "../../../utils/utils";
 
 const headerProps = {
   icon: <FontAwesomeIcon icon={faCalendarDays} />,
@@ -20,18 +20,12 @@ const headerProps = {
     "Cadastro de eventos, notícias e artigos: Incluir, Listar, Alterar e Excluir!",
 };
 
-const baseUrl = "http://localhost:3001/eventos";
-const ini = { manchete: "", data: "", materia: "", datepicker: "" };
-const initialState = {
-  evento: ini,
-  list: [],
-};
 
 export default class Crud extends Component {
   state = { ...initialState };
 
   componentWillMount() {
-    axios(baseUrl).then((resp) => {
+    axios(`${baseUrl}/eventos`).then((resp) => {
       this.setState({ list: resp.data });
     });
   }
@@ -100,26 +94,6 @@ export default class Crud extends Component {
             </div>
           </div>
         </div>
-        {/* <div className="row"> */}
-          {/* <div className="col-6"> */}
-            {/* <DatePicker
-              type="date-local"
-              local="br"
-              selected={this.state.evento.datepicker}
-              onChange={(e) => {
-                console.log(e);
-                // this.updateField(e)
-              }}
-              className="form-field"
-              id="data"
-              placeholder="Digite a data..."
-              name="datepicker"
-            /> */}
-          {/* </div> */}
-          {/* <label className="col-6">Data:</label>
-          <input as="date" html5="true" type="date" name="data-ruby" id="data-ruby"></input>
-          </div> */}
-        {/* </div> */}
         <div className="row">
           <div className="col-12">
             <div className="form-group">
