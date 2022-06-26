@@ -7,7 +7,7 @@ import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Right from './components/Right';
 import Rotas from './components/Routes'
-// import Home from './components/Home';
+import Back from './layout/Back'
 
 export default _ =>
   <BrowserRouter>
@@ -17,8 +17,9 @@ export default _ =>
       <Nav />
       <Right />
       <div className="content">
-        {/* <Home /> */}
+        <Back />
         <Rotas />
+        <Back />
       </div>
       <Footer />
     </div>
