@@ -1,5 +1,7 @@
 #quemsomos {
     background: linear-gradient(135deg, lightyellow, yellow);
+    max-height: 70vh;
+    overflow-x: auto;
 }
 
 #quemsomos h1 {

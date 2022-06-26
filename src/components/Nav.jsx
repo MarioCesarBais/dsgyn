@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faNewspaper, faPaperPlane, faAddressCard, faCalendarDays, faFileLines } from '@fortawesome/free-solid-svg-icons'
 
+import Back from '../layout/Back';
 import './nav.css';
 
 export default props =>
@@ -27,5 +28,6 @@ export default props =>
                 <FontAwesomeIcon icon={faAddressCard} /> Quem Somos
             </Link>
             <Link to='/crud'>CRUD</Link>
+            <Back></Back>
         </nav>
     </aside>

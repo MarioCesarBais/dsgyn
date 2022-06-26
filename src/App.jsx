@@ -17,9 +17,7 @@ export default _ =>
       <Nav />
       <Right />
       <div className="content">
-        <Back />
         <Rotas />
-        <Back />
       </div>
       <Footer />
     </div>

@@ -37,7 +37,7 @@ export default class Crud extends Component {
   save() {
     const evento = this.state.evento;
     const method = evento.id ? "put" : "post"; //identificar se se trata de salvar novo registro ou atualizá-lo
-    const url = evento.id ? `${baseUrl}/${evento.id}` : baseUrl;
+    const url = evento.id ? `${baseUrl}/eventos/${evento.id}` : `${baseUrl}/eventos`;
     axios[method](url, evento).then((resp) => {
       const list = this.getUpdatedList(resp.data);
       this.setState({ evento: initialState.evento, list });
@@ -165,7 +165,6 @@ export default class Crud extends Component {
         <tr key={evento.manchete}>
           <td>{evento.id}</td>
           <td>{evento.manchete}</td>
-          {/* <td>{typeof(evento.data)}</td> */}
           <td>{this.formatDate(evento.data)}</td>
           <td>
             <button
