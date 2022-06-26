@@ -3,15 +3,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import Card from "../../../layout/Card";
-// import eventos from '../../../data/eventos.json';
 import { baseUrl, initialState } from "../../../utils/utils";
 
 export default () => {
     const [evento, setEvento] = useState(initialState);
     const [m, setM] = useState('')
     const maximo = 300
-    // const evento = eventos[eventos.length - 1] // último evento registrado
-    // const m = evento.materia.length <= maximo ? evento.materia : `${evento.materia.slice(0, maximo)} ...`
 
     const getData = async () => {
         await axios(`${baseUrl}/eventos`).then((resp) => {

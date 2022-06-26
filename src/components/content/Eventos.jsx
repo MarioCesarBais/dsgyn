@@ -1,9 +1,19 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
-import eventos from "../../data/eventos.json";
 import Card from "../../layout/Card";
+import { baseUrl, initialState } from "../../utils/utils";
 
 export default () => {
+
+  const [eventos, setEventos] = useState([initialState]);
+
+  const getData = async () => { await axios(`${baseUrl}/eventos`).then((resp) => { setEventos(resp.data); });};
+
+  useEffect(() => { getData(); }, []);
+  useEffect(() => {if (eventos.length > 1) {}}, [eventos]);
+
   const eventosLI = eventos.slice(0).reverse().map((evento) => (
     <div className="border border-dark rounded w-100 p-1 m-1" key={Math.random()}>
       <Link to="/mat" state={evento}>
@@ -14,7 +24,7 @@ export default () => {
 
   return (
     <div className="Cards">
-      <Card titulo="Eventos" color="#3A9AD9" key={Math.random()}>
+      <Card titulo="Eventos" color="#3A9AD9">
         <div>{eventosLI}</div>
       </Card>
     </div>
