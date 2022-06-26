@@ -4,7 +4,7 @@ import './mat.css'
 import Card from "../../layout/Card";
 
 export default () => {
-  const [manchete, data, materia] = Object.values(useLocation().state)
+  const [_, manchete, data, materia] = Object.values(useLocation().state)
   return (
     <div className="Cards">
       <Card titulo={manchete} color="#3A9AD9">
