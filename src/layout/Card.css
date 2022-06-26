@@ -21,6 +21,7 @@
     padding: 10px;
     background-color: var(--bg-light);
     text-align: center;
+    overflow-x: auto;
 }
 
 li {
