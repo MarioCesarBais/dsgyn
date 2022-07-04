@@ -85,7 +85,7 @@ a:hover { background-color: aqua;}
     grid-template-areas:
       "logo banner"
       "menu content"
-      "menu footer";
+      "footer footer";
   }
 }
 

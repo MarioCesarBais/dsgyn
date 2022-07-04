@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import Card from "../../../layout/Card";
-// import eventos from '../../../data/eventos.json'
 import { baseUrl, initialState, formattedDate } from "../../../utils/utils";
 
 
