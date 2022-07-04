@@ -14,8 +14,8 @@ export default () => {
 
     const getData = async () => {
         await axios(`${baseUrl}/eventos`).then((resp) => {
-          setEvento(resp.data[resp.data.length - 1]);
-          setM(`${resp.data[resp.data.length - 1].materia.slice(0, maximo)} ...`)
+          setEvento(resp.data[resp.data.length - 2]);
+          setM(`${resp.data[resp.data.length - 2].materia.slice(0, maximo)} ...`)
         });
       };
     
