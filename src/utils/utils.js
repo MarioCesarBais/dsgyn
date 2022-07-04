@@ -14,8 +14,9 @@ export const baseUrl = "http://localhost:3001";
 const ini = { manchete: "", data: "", materia: "" };
 
 export const initialState = {
-  eventos: ini,
-  noticias: ini,
+  evento: ini,
+  noticia: ini,
+  list: []
 };
 
 export const formattedDate = (date) => {
