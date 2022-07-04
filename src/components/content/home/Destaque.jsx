@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import Card from "../../../layout/Card";
-import { baseUrl, initialState } from "../../../utils/utils";
+import { baseUrl, initialState, formattedDate } from "../../../utils/utils";
 
 export default () => {
     const [evento, setEvento] = useState(initialState);
@@ -25,7 +25,7 @@ export default () => {
             <Card id="destaque" titulo={evento.manchete} color="#3A9AD9">
                 <div>
                     <p className='texto'>
-                        {evento.data} - {m}
+                        {formattedDate(evento.data)} -- {m}
                         <Link to="/mat" state={evento}>ler mais ...</Link>
                     </p>
                 </div>

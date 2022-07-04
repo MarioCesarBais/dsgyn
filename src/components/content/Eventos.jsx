@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import Card from "../../layout/Card";
-import { baseUrl, initialState } from "../../utils/utils";
+import { baseUrl, initialState, formattedDate } from "../../utils/utils";
 
 export default () => {
 
@@ -12,12 +12,12 @@ export default () => {
   const getData = async () => { await axios(`${baseUrl}/eventos`).then((resp) => { setEventos(resp.data); });};
 
   useEffect(() => { getData(); }, []);
-  useEffect(() => {if (eventos.length > 1) {}}, [eventos]);
+  useEffect(() => { if(length.eventos > 1) {} }, [eventos]);
 
   const eventosLI = eventos.slice(0).reverse().map((evento) => (
     <div className="border border-dark rounded w-100 p-1 m-1" key={Math.random()}>
       <Link to="/mat" state={evento}>
-        {evento.data} --- {evento.manchete}
+        {formattedDate(evento.data)} -- {evento.manchete}
       </Link>
     </div>
   ));

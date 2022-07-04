@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import Card from "../../layout/Card";
-import { baseUrl, initialState } from "../../utils/utils";
+import { baseUrl, initialState, formattedDate } from "../../utils/utils";
 
 export default () => {
 
@@ -17,7 +17,7 @@ export default () => {
   const artigosLI = artigos.slice(0).reverse().map((evento) => (
     <div className="border border-dark rounded w-100 p-1 m-1" key={Math.random()}>
       <Link to="/mat" state={evento}>
-        {evento.data} --- {evento.manchete}
+        {formattedDate(evento.data)} -- {evento.manchete}
       </Link>
     </div>
   ));

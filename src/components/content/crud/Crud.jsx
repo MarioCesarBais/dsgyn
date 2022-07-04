@@ -137,7 +137,7 @@ export default class Crud extends Component {
   }
 
   remove(evento) {
-    axios.delete(`${baseUrl}/${evento.id}`).then((resp) => {
+    axios.delete(`${baseUrl}/eventos/${evento.id}`).then((resp) => {
       const list = this.getUpdatedList(evento, false);
       this.setState({ list });
     });

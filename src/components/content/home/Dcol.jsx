@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import Card from "../../../layout/Card";
-import { baseUrl, initialState } from "../../../utils/utils";
+import { baseUrl, initialState, formattedDate } from "../../../utils/utils";
 
 const maximo = 120;
 
@@ -26,7 +26,7 @@ export default () => {
       <Card id="dcol" titulo={noticia.manchete} color="#3A9AD9">
         <div>
           <p className="texto">
-            {noticia.data} - {m}
+            {formattedDate(noticia.data)} -- {m}
             <Link to="/mat" state={noticia}>
               ler mais ...
             </Link>
