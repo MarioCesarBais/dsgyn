@@ -10,15 +10,65 @@ aside.menu-area {
     text-decoration: none;
     color: #FFF;
     font-weight: 300;
-    padding: 15px;
+    padding: 7px;
 }
 
-.menu a:hover {
+a:hover {
     background: linear-gradient(135deg, #07a7e3 0%, #32dac3 100%);
 }
 
 a > i, a > svg {
     color: lightblue;
+}
+
+.menu-dd.active {
+    opacity: 1;
+    visibility: visible;
+    display: contents;
+}
+
+.menu-dd {
+    opacity: 0;
+    display: none;
+}
+
+.menu-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-button {
+    border-radius: 5px;
+}
+
+.menu-dd > ul > li {
+    list-style-type: none;
+    border-radius: 10px;
+    margin-top: 0.5rem;
+    width: 75%;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    /* position: relative;
+    top: 50%;
+    transform: translateY(-50%); */
+}
+
+.menu-dd > ul > li > a {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(9, 82, 155);
+    border-radius: 10px;
+}
+
+.menu-dd > ul {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
 /* @media(max-width: 950px) {
