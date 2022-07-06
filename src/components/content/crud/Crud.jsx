@@ -20,9 +20,8 @@ const headerProps = {
     "Cadastro de eventos, notícias e artigos: Incluir, Listar, Alterar e Excluir!",
 };
 
-
 export default class Crud extends Component {
-  state = { ...initialState };
+  state = { ...initialState };  
 
   componentWillMount() {
     axios(`${baseUrl}/eventos`).then((resp) => {
@@ -32,10 +31,12 @@ export default class Crud extends Component {
 
   clear() {
     this.setState({ evento: initialState.evento });
+    console.log(this)
   }
 
   save() {
     const evento = this.state.evento;
+    if(!(evento.materia && evento.data && evento.manchete)) return
     const method = evento.id ? "put" : "post"; //identificar se se trata de salvar novo registro ou atualizá-lo
     const url = evento.id ? `${baseUrl}/eventos/${evento.id}` : `${baseUrl}/eventos`;
     axios[method](url, evento).then((resp) => {
@@ -72,6 +73,7 @@ export default class Crud extends Component {
                 value={this.state.evento.manchete}
                 onChange={(e) => this.updateField(e)}
                 placeholder="Digite a manchete..."
+                required={true}
               />
             </div>
           </div>
@@ -90,6 +92,7 @@ export default class Crud extends Component {
                 value={this.state.evento.data}
                 onChange={(e) => this.updateField(e)}
                 placeholder="Digite a data..."
+                required={true}
               />
             </div>
           </div>
@@ -105,6 +108,7 @@ export default class Crud extends Component {
                 value={this.state.evento.materia}
                 onChange={(e) => this.updateField(e)}
                 placeholder="Digite a matéria..."
+                required={true}
               />
             </div>
           </div>
