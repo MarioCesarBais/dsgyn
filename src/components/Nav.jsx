@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-// import { useRef } from "react";
 // import { fatypewriter } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,14 +13,10 @@ import {
 import Back from "../layout/Back";
 import "./nav.css";
 import { useState } from "react";
-import { useOutsideClick } from "../utils/utils";
 
-export default (props) => {
-  // const dropDownRef = useRef(null);
+export default () => {
   const [isActive, setIsActive] = useState(false);
   const onClick = () => setIsActive(!isActive);
-
-  // console.log(isActive);
 
   return (
     <aside className="menu-area">
@@ -59,10 +54,14 @@ export default (props) => {
         >
           <ul>
             <li>
-              <Link to="/crud" state='eventos'> Eventos</Link>
+              <Link to="/crudeventos"> Eventos</Link>
             </li>
-            <li>Notícias</li>
-            <li>Artigos</li>
+            <li>
+              <Link to='/crudnoticias'> Notícias</Link>
+            </li>
+            <li>
+              <Link to='/crudartigos'> Artigos</Link>
+            </li>
           </ul>
         </nav>
         <Back></Back>

@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faNewspaper,
   faPaperPlane,
@@ -7,38 +6,35 @@ import {
   faCalendarDays,
   faFileLines,
 } from "@fortawesome/free-solid-svg-icons";
+import './crud.css'
 import axios from "axios";
 
 import Main from "../../template/Main";
 
 import { baseUrl, initialState } from "../../../utils/utils";
 
-const headerProps = {
-  icon: <FontAwesomeIcon icon={faCalendarDays} />,
-  title: "Eventos",
-  subtitle:
-    "Cadastro de eventos, notícias e artigos: Incluir, Listar, Alterar e Excluir!",
-};
+class Crud extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { ...initialState, props };
+    console.log(this.state)
+  }
 
-export default class Crud extends Component {
-  state = { ...initialState };  
-
-  componentWillMount() {
-    axios(`${baseUrl}/eventos`).then((resp) => {
+  componentDidMount() {
+    axios(`${baseUrl}/${this.state.props.subject}`).then((resp) => {
       this.setState({ list: resp.data });
     });
   }
 
   clear() {
     this.setState({ evento: initialState.evento });
-    console.log(this)
   }
 
   save() {
     const evento = this.state.evento;
     if(!(evento.materia && evento.data && evento.manchete)) return
     const method = evento.id ? "put" : "post"; //identificar se se trata de salvar novo registro ou atualizá-lo
-    const url = evento.id ? `${baseUrl}/eventos/${evento.id}` : `${baseUrl}/eventos`;
+    const url = evento.id ? `${baseUrl}/${this.state.props.subject}/${evento.id}` : `${baseUrl}/${this.state.props.subject}`;
     axios[method](url, evento).then((resp) => {
       const list = this.getUpdatedList(resp.data);
       this.setState({ evento: initialState.evento, list });
@@ -86,7 +82,6 @@ export default class Crud extends Component {
                 as='date'
                 type="date"
                 className="form-control"
-                // data-date=""
                 data-date-format="DD/MM/YYYY"
                 name="data"
                 value={this.state.evento.data}
@@ -141,7 +136,7 @@ export default class Crud extends Component {
   }
 
   remove(evento) {
-    axios.delete(`${baseUrl}/eventos/${evento.id}`).then((resp) => {
+    axios.delete(`${baseUrl}/${this.state.props.subject}/${evento.id}`).then((resp) => {
       const list = this.getUpdatedList(evento, false);
       this.setState({ list });
     });
@@ -168,9 +163,9 @@ export default class Crud extends Component {
       return (
         <tr key={evento.manchete}>
           <td>{evento.id}</td>
-          <td>{evento.manchete}</td>
+          <td id='manchete'>{evento.manchete}</td>
           <td>{this.formatDate(evento.data)}</td>
-          <td>
+          <td id='botoes'>
             <button
               className="btn btn-warning mx-1"
               onClick={() => this.load(evento)}
@@ -190,11 +185,14 @@ export default class Crud extends Component {
   }
 
   render() {
+    const s = this.state.props.subject.slice(0, -1) // singular
     return (
-      <Main {...headerProps}>
+      <Main {...this.state.props.header}>
         {this.renderForm()}
         {this.renderTable()}
       </Main>
     );
   }
 }
+
+export default Crud

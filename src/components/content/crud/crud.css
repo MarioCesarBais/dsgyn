@@ -2,3 +2,7 @@ tbody {
     overflow-x: auto;
     max-height: 10vh;
 }
+
+#botoes {
+    min-width: 7rem;
+}

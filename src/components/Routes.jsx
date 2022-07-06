@@ -7,10 +7,11 @@ import Noticias from './content/Noticias'
 import Documentos from './content/Documentos'
 import Mat from './content/Mat'
 import QuemSomos from './content/QuemSomos'
-import CRUD from './content/crud/Crud'
+import CrudEventos from './content/crud/CrudEventos'
+import CrudNoticias from './content/crud/CrudNoticias'
+import CrudArtigos from './content/crud/CrudArtigos'
 
-
-export default props =>
+export default () =>
     <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/artigos' element={<Artigos />} />
@@ -19,6 +20,8 @@ export default props =>
         <Route path='/documentos' element={<Documentos />} />
         <Route path='/mat' element={<Mat />} />
         <Route path='/quemsomos' element={<QuemSomos />} />
-        <Route path='/crud' element={<CRUD />} />
+        <Route path='/crudeventos' element={<CrudEventos />} />
+        <Route path='/crudnoticias' element={<CrudNoticias />} />
+        <Route path='/crudartigos' element={<CrudArtigos />} />
         <Route path="*" element={<Navigate replace to="/" />} />
     </Routes>
