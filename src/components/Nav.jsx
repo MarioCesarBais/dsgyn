@@ -7,7 +7,7 @@ import {
   faAddressCard,
   faCalendarDays,
   faFileLines,
-  faBars,
+  faBars
 } from "@fortawesome/free-solid-svg-icons";
 
 import Back from "../layout/Back";
@@ -44,7 +44,7 @@ export default () => {
             className="menu-button btn btn-primary btn-sm mt-3"
             onClick={onClick}
           >
-            <FontAwesomeIcon icon={faBars} /> CRUD
+            <FontAwesomeIcon icon={faBars} /> Manutenção
           </button>
         </div>
         <nav
