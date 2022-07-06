@@ -5,7 +5,8 @@ import Card from "../../layout/Card";
 import { formattedDate } from "../../utils/utils";
 
 export default () => {
-  const [_, manchete, data, materia] = Object.values(useLocation().state)
+  const location = useLocation().state
+  const [manchete, data, materia] = [location.manchete, location.data, location.materia]
   return (
     <div className="Cards">
       <Card titulo={manchete} color="#3A9AD9">

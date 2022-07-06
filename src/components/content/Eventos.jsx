@@ -11,7 +11,7 @@ export default () => {
 
   const getData = async () => { await axios(`${baseUrl}/eventos`).then((resp) => { setEventos(resp.data); });};
 
-  useEffect(() => { getData(); }, []);
+  useEffect(() => { getData(); }, [eventos]);
   useEffect(() => { if(length.eventos > 1) {} }, [eventos]);
 
   const eventosLI = eventos.slice(0).reverse().map((evento) => (
