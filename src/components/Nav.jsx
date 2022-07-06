@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-// import { fatypewriter } from '@fortawesome/free-solid-svg-icons'
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faNewspaper,
@@ -12,7 +12,6 @@ import {
 
 import Back from "../layout/Back";
 import "./nav.css";
-import { useState } from "react";
 
 export default () => {
   const [isActive, setIsActive] = useState(false);
@@ -41,26 +40,26 @@ export default () => {
         </Link>
 
         <div className="menu-container">
-        <button
-          className="menu-button btn btn-primary btn-sm mt-3"
-          onClick={onClick}
-        >
-          <FontAwesomeIcon icon={faBars} /> CRUD
-        </button>
+          <button
+            className="menu-button btn btn-primary btn-sm mt-3"
+            onClick={onClick}
+          >
+            <FontAwesomeIcon icon={faBars} /> CRUD
+          </button>
         </div>
         <nav
-            // ref={dropDownRef}
-            className={`menu-dd ${isActive ? "active" : "inactive"}`}
+          // ref={dropDownRef}
+          className={`menu-dd ${isActive ? "active" : "inactive"}`}
         >
           <ul>
             <li>
               <Link to="/crudeventos"> Eventos</Link>
             </li>
             <li>
-              <Link to='/crudnoticias'> Notícias</Link>
+              <Link to="/crudnoticias"> Notícias</Link>
             </li>
             <li>
-              <Link to='/crudartigos'> Artigos</Link>
+              <Link to="/crudartigos"> Artigos</Link>
             </li>
           </ul>
         </nav>

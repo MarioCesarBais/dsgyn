@@ -24,7 +24,7 @@ export default () => {
 
   return (
     <div className="Cards">
-      <Card titulo="noticias" color="#3A9AD9">
+      <Card titulo="Notícias" color="#3A9AD9">
         <div>{noticiasLI}</div>
       </Card>
     </div>

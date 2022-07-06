@@ -1,23 +1,15 @@
 import { Component } from "react";
-import {
-  faNewspaper,
-  faPaperPlane,
-  faAddressCard,
-  faCalendarDays,
-  faFileLines,
-} from "@fortawesome/free-solid-svg-icons";
-import './crud.css'
 import axios from "axios";
 
+import './crud.css'
 import Main from "../../template/Main";
 
-import { baseUrl, initialState } from "../../../utils/utils";
+import { baseUrl, initialState, formattedDate } from "../../../utils/utils";
 
 class Crud extends Component {
   constructor(props) {
     super(props);
     this.state = { ...initialState, props };
-    console.log(this.state)
   }
 
   componentDidMount() {
@@ -52,8 +44,6 @@ class Crud extends Component {
     evento[event.target.name] = event.target.value;
     this.setState({ evento });
   }
-
-  formatDate = string => string.length === 10 ? `${string.slice(8,10)}/${string.slice(5,7)}/${string.slice(0,4)}` : ''
 
   renderForm() {
     return (
@@ -164,7 +154,7 @@ class Crud extends Component {
         <tr key={evento.manchete}>
           <td>{evento.id}</td>
           <td id='manchete'>{evento.manchete}</td>
-          <td>{this.formatDate(evento.data)}</td>
+          <td>{formattedDate(evento.data)}</td>
           <td id='botoes'>
             <button
               className="btn btn-warning mx-1"
