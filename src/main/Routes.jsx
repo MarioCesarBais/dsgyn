@@ -1,15 +1,15 @@
 import { Route, Routes, Navigate } from 'react-router-dom'
 
-import Home from './content/home/Home'
+import Home from '../components/content/home/Home'
 import Artigos from '../components/content/Artigos'
-import Eventos from './content/Eventos'
-import Noticias from './content/Noticias'
-import Documentos from './content/Documentos'
-import Mat from './content/Mat'
-import QuemSomos from './content/QuemSomos'
-import CrudEventos from './content/crud/CrudEventos'
-import CrudNoticias from './content/crud/CrudNoticias'
-import CrudArtigos from './content/crud/CrudArtigos'
+import Eventos from '../components/content/Eventos'
+import Noticias from '../components/content/Noticias'
+import Documentos from '../components/content/Documentos'
+import Mat from '../components/content/Mat'
+import QuemSomos from '../components/content/QuemSomos'
+import CrudEventos from '../components/content/crud/CrudEventos'
+import CrudNoticias from '../components/content/crud/CrudNoticias'
+import CrudArtigos from '../components/content/crud/CrudArtigos'
 
 export default () =>
     <Routes>

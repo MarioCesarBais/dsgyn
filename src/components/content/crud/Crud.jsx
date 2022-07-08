@@ -35,7 +35,7 @@ class Crud extends Component {
 
   getUpdatedList(evento, add = true) {
     const list = this.state.list.filter((e) => e.id !== evento.id);
-    if (add) list.unshift(evento);
+    if (add) list.push(evento);
     return list;
   }
 
@@ -149,9 +149,9 @@ class Crud extends Component {
   }
 
   renderRows() {
-    return this.state.list.map((evento) => {
+    return this.state.list.slice(0).reverse().map((evento) => {
       return (
-        <tr key={evento.manchete}>
+        <tr key={evento.id}>
           <td>{evento.id}</td>
           <td id='manchete'>{evento.manchete}</td>
           <td>{formattedDate(evento.data)}</td>
