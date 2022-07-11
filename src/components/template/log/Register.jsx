@@ -3,6 +3,7 @@ import { Navigate, Link } from "react-router-dom";
 import axiox from "axios";
 
 import { baseUrlUser } from "../../../utils/utils";
+import Card from "../../../layout/Card";
 
 const Register = ({ setLogoutUser }) => {
   const [email, setEmail] = useState("");
@@ -32,46 +33,6 @@ const Register = ({ setLogoutUser }) => {
       })
       .catch((error) => setError(error.response.data.message));
   };
-  // return (
-  //   <div style={{ marginTop: "100px" }}>
-  //     <h2>Register Page</h2>
-  //     {error && <p style={{ color: "red" }}>{error}</p>}
-  //     <form
-  //       className={classes.root}
-  //       noValidate
-  //       autoComplete="off"
-  //       onSubmit={register}
-  //     >
-  //       <TextField
-  //         id="username"
-  //         label="Username"
-  //         type="text"
-  //         value={email}
-  //         onChange={(e) => setEmail(e.target.value)}
-  //       />
-  //       <br />
-  //       <TextField
-  //         id="password"
-  //         label="Password"
-  //         type="password"
-  //         value={password}
-  //         onChange={(e) => setPassword(e.target.value)}
-  //       />
-  //       <br />
-  //       <Button
-  //         style={{ width: "100px" }}
-  //         variant="contained"
-  //         color="primary"
-  //         type="submit"
-  //       >
-  //         Register
-  //       </Button>
-  //     </form>
-  //     <p>
-  //       Already have an account then please <Link to="/login">Login</Link>
-  //     </p>
-  //   </div>
-  // );
 
   if (
     localStorage &&
@@ -81,8 +42,7 @@ const Register = ({ setLogoutUser }) => {
     return <Navigate replace to="/" />;
   else
     return (
-      <div style={{ marginTop: "100px" }}>
-        <h2>Register Page</h2>
+      <Card titulo='Registro de Usuário' color='aqua'>
         {error && <p style={{ color: "red" }}>{error}</p>}
         <form
           noValidate
@@ -126,13 +86,11 @@ const Register = ({ setLogoutUser }) => {
             Registrar-se
           </button>
         </form>
-        <p>
+        <p className="mt-3">
           Já possui conta? <Link to="/login">Login!</Link>
         </p>
-      </div>
+      </Card>
     );
-
-
 };
 
 export default Register;

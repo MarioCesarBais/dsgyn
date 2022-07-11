@@ -3,6 +3,7 @@ import { Navigate, Link } from "react-router-dom";
 import axiox from "axios";
 
 import { baseUrlUser } from "../../../utils/utils";
+import Card from '../../../layout/Card'
 
 const Login = ({ setLogoutUser }) => {
   const [email, setEmail] = useState("");
@@ -38,11 +39,10 @@ const Login = ({ setLogoutUser }) => {
     localStorage.login &&
     JSON.parse(localStorage.login).userLogin
   )
-    return <Navigate replace to="/" />;
+    return <Navigate replace to="/"/>;
   else
     return (
-      <div style={{ marginTop: "100px" }}>
-        <h2>Login Page</h2>
+      <Card titulo='Login' color='aqua'>
         {error && <p style={{ color: "red" }}>{error}</p>}
         <form
           noValidate
@@ -86,10 +86,10 @@ const Login = ({ setLogoutUser }) => {
             Login
           </button>
         </form>
-        <p>
+        <p className="mt-3">
           Não possui conta? <Link to="/register">Registre-se!</Link>
         </p>
-      </div>
+      </Card>
     );
 };
 

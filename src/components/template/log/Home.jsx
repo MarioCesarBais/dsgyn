@@ -1,10 +1,7 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const Home = () => {
-  console.log('home')
   const isLoginTrue = JSON.parse(localStorage.getItem("login"));
-
   const userNotLogin = () => (
     <div>
       <p className="mb-1"><strong>Usuário Não Logado</strong></p>
