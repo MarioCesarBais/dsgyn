@@ -11,6 +11,8 @@ export function showhide(e) {
 
 export const baseUrl = "http://localhost:3001";
 
+export const baseUrlUser = "http://localhost:3002"
+
 const ini = { manchete: "", data: "", materia: "" };
 
 export const initialState = {

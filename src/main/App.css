@@ -31,14 +31,14 @@
     1fr
     var(--footer-height);
   grid-template-areas:
-    "logo banner right"
+    "logo banner log"
     "menu content right"
     "footer footer footer";
   background: linear-gradient(135deg, white, black);
 }
 
-.navbar-custom-menu {
-  grid-area: navbar;
+#log {
+  grid-area: log;
 }
 
 #logo {
