@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-const Home = () => {
+const Home = props => {
   const isLoginTrue = JSON.parse(localStorage.getItem("login"));
   const userNotLogin = () => (
     <div>
@@ -25,4 +26,10 @@ const Home = () => {
   );
 };
 
-export default Home;
+function mapStateToProps(state) {
+  return {
+    userLogged: state.userLogged
+  }
+}
+
+export default connect(mapStateToProps)(Home);

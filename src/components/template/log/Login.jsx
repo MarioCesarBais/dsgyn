@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Navigate, Link } from "react-router-dom";
 import axiox from "axios";
+import { connect } from "react-redux";
 
+import { alterarLogin } from "../../../store/actions/login";
 import { baseUrlUser } from "../../../utils/utils";
 import Card from '../../../layout/Card'
 
-const Login = ({ setLogoutUser }) => {
+const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -25,13 +27,16 @@ const Login = ({ setLogoutUser }) => {
             token: response.data.access_token,
           })
         );
+        console.log(email, props)
+        props.logged(email)
         setError("");
         setEmail("");
         setPassword("");
-        setLogoutUser(false);
+        // setLogoutUser(false);
       })
       .catch((error) => {
-        setError(error.response.data.message);
+        console.log(error)
+        if(error.response && error.response.data && error.response.data.message) setError(error.response.data.message);
       });
   };
   if (
@@ -93,4 +98,20 @@ const Login = ({ setLogoutUser }) => {
     );
 };
 
-export default Login;
+function mapStateToProps(state) {
+  console.log(state)
+  return { state }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    logged(email) {
+      // action creator -> action
+      console.log(email)
+      const action = alterarLogin(email)
+      dispatch(action)
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
