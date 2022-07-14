@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Navigate, Link } from "react-router-dom";
 import axiox from "axios";
+import { connect } from "react-redux";
 
+import { alterarLogin } from "../../../store/actions/login";
 import { baseUrlUser } from "../../../utils/utils";
 import Card from "../../../layout/Card";
 
-const Register = ({ setLogoutUser }) => {
+const Register = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -18,7 +20,6 @@ const Register = ({ setLogoutUser }) => {
         password,
       })
       .then((response) => {
-        console.log("response", response);
         localStorage.setItem(
           "login",
           JSON.stringify({
@@ -26,12 +27,15 @@ const Register = ({ setLogoutUser }) => {
             token: response.data.access_token,
           })
         );
+        localStorage.setItem("user", email);
+        props.logged(email)
         setError("");
         setEmail("");
         setPassword("");
-        setLogoutUser(false);
       })
-      .catch((error) => setError(error.response.data.message));
+      .catch((error) => {
+        if(error.response && error.response.data && error.response.data.message) setError(error.response.data.message);
+      })
   };
 
   if (
@@ -93,4 +97,18 @@ const Register = ({ setLogoutUser }) => {
     );
 };
 
-export default Register;
+function mapStateToProps(state) {
+  return { state }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    logged(email) {
+      // action creator -> action
+      const action = alterarLogin(email)
+      dispatch(action)
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register)

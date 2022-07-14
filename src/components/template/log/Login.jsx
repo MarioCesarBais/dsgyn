@@ -8,7 +8,6 @@ import { baseUrlUser } from "../../../utils/utils";
 import Card from '../../../layout/Card'
 
 const Login = (props) => {
-  console.log('login')
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -25,26 +24,19 @@ const Login = (props) => {
           "login",
           JSON.stringify({
             userLogin: true,
-            token: response.data.access_token,
-            user: email
+            token: response.data.access_token
           }),
         );
         localStorage.setItem("user", email)
         props.logged(email)
-        // props.isLoggedIn(true)
         setError("");
         setEmail("");
         setPassword("");
       })
       .catch((error) => {
-        console.log(error)
         if(error.response && error.response.data && error.response.data.message) setError(error.response.data.message);
       });
   };
-
-  console.log(localStorage, localStorage &&
-    localStorage.login &&
-    JSON.parse(localStorage.login).userLogin)
 
   if ((
     localStorage &&
@@ -106,7 +98,6 @@ const Login = (props) => {
 };
 
 function mapStateToProps(state) {
-  console.log(state)
   return { state }
 }
 

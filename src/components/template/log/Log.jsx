@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import { Component } from "react";
 import { Link } from "react-router-dom";
 import Card from "../../../layout/Card";
 import { connect } from "react-redux";
@@ -12,7 +12,7 @@ function UserGreeting() {
       <div>
         <h2>Bem vindo,</h2> {localStorage.user}!
       </div>
-      <Link to='/' />
+      <Link to="/" />
     </div>
   );
 }
@@ -42,78 +42,55 @@ function Greeting(props) {
 }
 
 function LoginButton(props) {
-    return (
-        <Link to='/login'>
-      <button onClick={props.onClick}>
-        Login
-      </button>
-      </Link>
-    );
-  }
-  
-  function LogoutButton(props) {
-    return (
-      <Link to='/'>
-      <button onClick={props.onClick}>
-        Logout
-      </button>
-      </Link>
-    );
+  return (
+    <Link to="/login">
+      <button onClick={props.onClick}>Login</button>
+    </Link>
+  );
+}
+
+function LogoutButton(props) {
+  return (
+    <Link to="/">
+      <button onClick={props.onClick}>Logout</button>
+    </Link>
+  );
+}
+
+class LoginControl extends Component {
+  constructor(props) {
+    super(props);
+    this.handleLogoutClick = this.handleLogoutClick.bind(this);
+    this.state = { isLoggedIn: localStorage.user ? true : false };
   }
 
-  class LoginControl extends React.Component {
-    constructor(props) {
-      super(props);
-    //   this.handleLoginClick = this.handleLoginClick.bind(this);
-      this.handleLogoutClick = this.handleLogoutClick.bind(this);
-      this.state = {isLoggedIn: localStorage.user ? true : false};
-      console.log(props)
+  handleLogoutClick() {
+    this.setState({ isLoggedIn: false });
+    localStorage.removeItem("login");
+    localStorage.removeItem("user");
+  }
+
+  render() {
+    let button;
+    if (localStorage.user) {
+      button = <LogoutButton onClick={this.handleLogoutClick} />;
+    } else {
+      button = <LoginButton />;
     }
-  
-    // handleLoginClick() {
-    //     console.log('handleclicklogin')
-    //     // const user = localStorage.user
-    //     // // useEffect(() => {if(localStorage.user) {}}, [user])
-    //     // // useEffect(() => {if(!user) {}}, [])
-    //     // this.setState({isLoggedIn: localStorage.user ? true : false});
-    //     // console.log(this.state)
-    // }
-  
-    handleLogoutClick() {
-      this.setState({isLoggedIn: false});
-      localStorage.removeItem("login");
-      localStorage.removeItem("user");
-      console.log(localStorage, this.props);
-    }
-  
-    render() {
-        // this.setState({isLoggedIn: localStorage.user ? true : false})
-        console.log('state: ', this.state)
-        console.log('props :', this.props)
-        // if(this.props.state && this.props.state.user && this.props.state.user.userLogged)
-        // {this.setState({isLoggedIn: true})}
-      const isLoggedIn = this.state.isLoggedIn;
-      let button;
-      if (localStorage.user) {
-        button = <LogoutButton onClick={this.handleLogoutClick} />;
-      } else {
-        button = <LoginButton />;
-      }
-  
-      return (
-        <div id='log'>
-            <Card titulo='Login' color='lightgreen'>
+
+    return (
+      <div id="log">
+        <Card titulo="Login" color="lightgreen">
           <Greeting isLoggedIn={localStorage.user ? true : false} />
           {button}
-          </Card>
-        </div>
-      );
-    }
+        </Card>
+      </div>
+    );
   }
+}
 
-  function mapStateToProps(state) {
-    console.log(state)
-    return { state }
-  }
+function mapStateToProps(state) {
+  return { state };
+}
 
-  export default connect(mapStateToProps)(LoginControl);
+export default connect(mapStateToProps)(LoginControl);
