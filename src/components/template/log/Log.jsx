@@ -82,6 +82,7 @@ class LoginControl extends Component {
       <div id="log">
         <Card titulo="Login" color="lightgreen">
           <Greeting isLoggedIn={localStorage.user ? true : false} />
+          <br></br>
           {button}
         </Card>
       </div>

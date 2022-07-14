@@ -41,6 +41,10 @@
   grid-area: log;
 }
 
+/* #log > .Card > .Content {
+  height: var(--header-height);
+} */
+
 #logo {
   grid-area: logo;
 }
