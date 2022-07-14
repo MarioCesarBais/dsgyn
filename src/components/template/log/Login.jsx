@@ -8,6 +8,7 @@ import { baseUrlUser } from "../../../utils/utils";
 import Card from '../../../layout/Card'
 
 const Login = (props) => {
+  console.log('login')
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -25,25 +26,31 @@ const Login = (props) => {
           JSON.stringify({
             userLogin: true,
             token: response.data.access_token,
-          })
+            user: email
+          }),
         );
-        console.log(email, props)
+        localStorage.setItem("user", email)
         props.logged(email)
+        // props.isLoggedIn(true)
         setError("");
         setEmail("");
         setPassword("");
-        // setLogoutUser(false);
       })
       .catch((error) => {
         console.log(error)
         if(error.response && error.response.data && error.response.data.message) setError(error.response.data.message);
       });
   };
-  if (
+
+  console.log(localStorage, localStorage &&
+    localStorage.login &&
+    JSON.parse(localStorage.login).userLogin)
+
+  if ((
     localStorage &&
     localStorage.login &&
     JSON.parse(localStorage.login).userLogin
-  )
+  ))
     return <Navigate replace to="/"/>;
   else
     return (
@@ -107,7 +114,6 @@ function mapDispatchToProps(dispatch) {
   return {
     logged(email) {
       // action creator -> action
-      console.log(email)
       const action = alterarLogin(email)
       dispatch(action)
     }

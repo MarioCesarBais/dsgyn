@@ -14,8 +14,10 @@ import Footer from '../components/Footer';
 import Right from '../components/Right';
 import Rotas from './Routes'
 import Log from '../components/template/log/Log';
+import Teste from '../components/template/log/Teste'
 
 export default _ => {
+  // let user = localStorage.user
   // const [logoutUser, setLogoutUser] = useState(false);
   return (
   <BrowserRouter>
@@ -24,7 +26,9 @@ export default _ => {
       <Banner />
       <Nav />
       <Right />
-      <Log />
+      <Teste user={localStorage.user} />
+      {/* <Log /> */}
+      {/* // user={user}/> */}
       <div className="content">
         <Rotas />
       </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const Header = ({ logoutUser, setLogoutUser }) => {
   console.log('header')
@@ -29,6 +30,8 @@ const Header = ({ logoutUser, setLogoutUser }) => {
 
   console.log(!logoutUser && login && login.userLogin)
 
+  // if(logoutUser) return <Navigate to='/' replace />
+  // else
   return (
     <div className="d-flex justify-content-center">
       <header style={{ marginTop: "20px" }}>

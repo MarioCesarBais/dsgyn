@@ -1,16 +1,10 @@
 import { createStore, combineReducers } from 'redux'
+import logou from '../store/reducers/login'
+
+const initialState = {user: null}
 
 const reducers = combineReducers({
-    user: function(state, action) {
-        switch(action.type) {
-            case 'USUARIO_LOGOU':
-                return {
-                    ...state, userLogged: action.payload
-                }
-            default:
-                return {userLogged: null}
-        }
-    }        
+    user: logou
 })
 
 function storeConfig () {

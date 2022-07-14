@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 const Home = props => {
+  console.log(props)
   const isLoginTrue = JSON.parse(localStorage.getItem("login"));
   const userNotLogin = () => (
     <div>
@@ -18,7 +19,9 @@ const Home = props => {
   return (
     <div className='d-flex flex-column text-center' style={{ marginTop: "10px" }}>
       {isLoginTrue && isLoginTrue.userLogin ? (
-        <h2>Bem vindo!</h2>
+        <div>
+        <h2>Bem vindo</h2>{props.user.userLogged}!
+        </div>
       ) : (
         <>{userNotLogin()}</>
       )}
@@ -28,7 +31,7 @@ const Home = props => {
 
 function mapStateToProps(state) {
   return {
-    userLogged: state.userLogged
+    user: state.user
   }
 }
 
