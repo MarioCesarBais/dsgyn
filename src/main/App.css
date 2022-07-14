@@ -31,7 +31,7 @@
     1fr
     var(--footer-height);
   grid-template-areas:
-    "logo banner teste"
+    "logo banner log"
     "menu content right"
     "footer footer footer";
   background: linear-gradient(135deg, white, black);
@@ -39,10 +39,6 @@
 
 #log {
   grid-area: log;
-}
-
-#teste {
-  grid-area: teste;
 }
 
 #logo {

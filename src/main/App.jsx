@@ -14,7 +14,7 @@ import Footer from '../components/Footer';
 import Right from '../components/Right';
 import Rotas from './Routes'
 import Log from '../components/template/log/Log';
-import Teste from '../components/template/log/Teste'
+// import Teste from '../components/template/log/Teste'
 
 export default _ => {
   // let user = localStorage.user
@@ -26,7 +26,7 @@ export default _ => {
       <Banner />
       <Nav />
       <Right />
-      <Teste user={localStorage.user} />
+      <Log />
       {/* <Log /> */}
       {/* // user={user}/> */}
       <div className="content">
