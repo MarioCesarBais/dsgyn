@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import jwt_decode from "jwt-decode";
 
 import Card from "../../../layout/Card";
+import './log.css'
 
 function UserGreeting() {
   return (
@@ -111,7 +112,6 @@ class LoginControl extends Component {
       <div id="log">
         <Card titulo="Login" color="lightgreen">
           <Greeting isLoggedIn={localStorage.user ? true : false} />
-          <br></br>
           {button}
         </Card>
       </div>

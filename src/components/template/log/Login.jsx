@@ -47,6 +47,7 @@ const Login = (props) => {
   else
     return (
       <Card titulo='Login' color='aqua'>
+        <div className="d-flex justify-content-center flex-column">
         {error && <p style={{ color: "red" }}>{error}</p>}
         <form
           noValidate
@@ -93,6 +94,7 @@ const Login = (props) => {
         <p className="mt-3">
           Não possui conta? <Link to="/register">Registre-se!</Link>
         </p>
+        </div>
       </Card>
     );
 };

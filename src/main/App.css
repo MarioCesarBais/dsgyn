@@ -22,7 +22,6 @@
 /* Layout em Grid */
 
 .app {
-  /* overflow-y: scroll; */
   margin: 0;
   display: grid;
   grid-template-columns: var(--aside-width) 1fr var(--aside-right);
@@ -41,12 +40,9 @@
   grid-area: log;
 }
 
-/* #log > .Card > .Content {
-  height: var(--header-height);
-} */
-
-#logo {
+#logo-div {
   grid-area: logo;
+  display: flex;
 }
 
 #banner {
@@ -63,6 +59,7 @@ aside.menu-area {
 
 .content {
   grid-area: content;
+  display: contents;
 }
 
 #right {
@@ -85,13 +82,17 @@ a:hover { background-color: aqua;}
   #right {
     display: none;
   }
+  #logo-div {
+    display: none;
+  }
   .app {
     grid-template-rows:
       var(--header-height)
-      1fr;
+      1fr
+      var(--footer-height);
     grid-template-columns: var(--aside-width) 1fr;
     grid-template-areas:
-      "logo banner"
+      "log banner"
       "menu content"
       "footer footer";
   }

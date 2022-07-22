@@ -1,0 +1,7 @@
+#log .Card {
+    height: var(--header-height);
+}
+
+/* #log .content .Card .Content {
+    flex-grow: 1;
+} */

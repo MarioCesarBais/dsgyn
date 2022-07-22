@@ -1,20 +1,16 @@
 #logo-div {
-    display: flex;
     background-color: white;
     flex-direction: column;
     height: var(--header-height);
 }
 
 #logo {
-    /* grid-area: logo; */
     height: var(--logo-height);
     justify-content: center;
     align-items: center;
     flex-grow: 0;
     flex-shrink: 0;
-    /* border-radius: 50%; */
     margin: auto;
-    display: flex;
 }
 
 #brasao {
