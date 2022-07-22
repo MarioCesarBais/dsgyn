@@ -1,7 +1,9 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
-import Card from "../../../layout/Card";
 import { connect } from "react-redux";
+import jwt_decode from "jwt-decode";
+
+import Card from "../../../layout/Card";
 
 function UserGreeting() {
   return (
@@ -64,6 +66,33 @@ class LoginControl extends Component {
     this.state = { isLoggedIn: localStorage.user ? true : false };
   }
 
+  isLoggedInF() {
+    const login = localStorage.getItem('login')
+    if(!login) {
+      this.setState( {isLoggedIn: false} )
+      localStorage.clear()
+      return false
+    }
+    const token = JSON.parse(login).token
+    if(!token) {
+      this.setState( {isLoggedIn: false} )
+      localStorage.clear()
+      return false
+    }
+    let decoded
+    try {
+      decoded = jwt_decode(token);
+    }
+    catch(e) {
+      localStorage.clear()
+      decoded = false
+      this.setState( {isLoggedIn: false} )
+      alert('Token Inválido')
+      return false
+    }
+    if(decoded) return true
+  }
+
   handleLogoutClick() {
     this.setState({ isLoggedIn: false });
     localStorage.removeItem("login");
@@ -72,7 +101,7 @@ class LoginControl extends Component {
 
   render() {
     let button;
-    if (localStorage.user) {
+    if (localStorage.user && this.isLoggedInF()) {
       button = <LogoutButton onClick={this.handleLogoutClick} />;
     } else {
       button = <LoginButton />;
