@@ -19,29 +19,33 @@
 
 #destaque {
     grid-area: destaque;
-    max-height: 1fr;
-    min-height: 1fr;
+    max-height: 100%;
+    min-height: 100%
 }
 
 #dcol {
     grid-area: dcol;
     height: 1fr;
-    max-height: 1fr;
-    min-height: 1fr;
+    max-height: 100%;
+    min-height: 100%
 }
 
 #dlin {
     grid-area: dlin;
-    max-height: 1fr;
-    min-height: 1fr;
+    max-height: 100%;
+    min-height: 100%
 }
 
 #menor {
     grid-area: menor;
-    max-height: 1fr;
-    min-height: 1fr;
+    max-height: 100%;
+    min-height: 100%
 }
 
 #home .Cards .Content .texto {
     height: 7rem;
+}
+
+#home > .Cards > .Card {
+    height: 100%;
 }
