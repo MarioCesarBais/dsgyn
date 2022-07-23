@@ -1,14 +1,15 @@
 :root {
   --bg-dark: rgb(32, 22, 22);
   --bg-light: rgb(241, 241, 119);
-  --bg-footer:  lightgreen;
-  --bg-card: #3A9AD9;
+  --bg-footer: lightgreen;
+  --bg-card: #3a9ad9;
 
   --logo-height: 100px;
   --header-height: 200px;
   --menu-top-height: 70px;
   --aside-width: 150px;
   --aside-right: 300px;
+  --aside-height: 70px;
   --footer-height: 60px;
 
   --shadow: 0 2px 23px 0 rgba(0, 0, 0, 0.1), 0 2px 49px 0 rgba(0, 0, 0, 0.06);
@@ -38,7 +39,6 @@
 
 #log {
   grid-area: log;
-
 }
 
 #logo-div {
@@ -77,13 +77,15 @@ footer {
   overflow: hidden;
 }
 
-a:hover { background-color: aqua;}
+a:hover {
+  background-color: aqua;
+}
 
 .content > .Cards > .Card {
   height: 100%;
 }
 
-/* @media (max-width: 950px) {
+@media (max-width: 950px) {
   #right {
     display: none;
   }
@@ -93,20 +95,17 @@ a:hover { background-color: aqua;}
   .app {
     grid-template-rows:
       var(--header-height)
+      var(--aside-height)
       1fr
       var(--footer-height);
     grid-template-columns: var(--aside-width) 1fr;
     grid-template-areas:
       "log banner"
-      "menu content"
+      "menu menu"
+      "content content"
       "footer footer";
   }
 }
-
-.content {
-  display: contents;
-  overflow: hidden;
-} */
 
 /* .content > .Card > .Content {
   display: contents;
