@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faNewspaper,
@@ -13,8 +14,6 @@ import jwt_decode from "jwt-decode";
 
 import Back from "../layout/Back";
 import "./nav.css";
-
-// import { isLoggedInF } from "./template/log/Log";
 
 function isLoggedIn() {
   const login = localStorage.getItem("login");
@@ -39,10 +38,18 @@ function isLoggedIn() {
   if (decoded) return true;
 }
 
-export default () => {
+function Nav(props) {
+  console.log(props)
+  const user = 
+    (props && props.state && props.state.user && props.state.user.userLogged) ?
+    props.state.user.userLogged : null
+  console.log(user)
+  const adm = localStorage.adm && isLoggedIn();
+  useEffect((user) => {if(!user){}}, [{display: false}])
+  useEffect((user) => {if(user && adm){}}, [{display: true}])
   const [isActive, setIsActive] = useState(false);
   const onClick = () => setIsActive(!isActive);
-  const adm = localStorage.adm && isLoggedIn();
+  const display = (adm ? '' : 'd-none')
 
   return (
     <aside className="menu-area">
@@ -66,7 +73,7 @@ export default () => {
           <FontAwesomeIcon icon={faAddressCard} /> Quem Somos
         </Link>
 
-        <div className="menu-container">
+        <div className={`menu-container ${display}`}>
           <button
             className="menu-button btn btn-primary btn-sm mt-3"
             onClick={onClick}
@@ -76,7 +83,7 @@ export default () => {
         </div>
         <nav
           // ref={dropDownRef}
-          className={`menu-dd ${isActive ? "active" : "inactive"}`}
+          className={`${display} menu-dd ${isActive ? "active" : "inactive"}`}
         >
           <ul>
             <li>
@@ -95,3 +102,9 @@ export default () => {
     </aside>
   );
 };
+
+function mapStateToProps(state) {
+  return { state };
+}
+
+export default connect(mapStateToProps)(Nav)

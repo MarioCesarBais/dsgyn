@@ -96,8 +96,7 @@ class LoginControl extends Component {
 
   handleLogoutClick() {
     this.setState({ isLoggedIn: false });
-    localStorage.removeItem("login");
-    localStorage.removeItem("user");
+    localStorage.clear()
   }
 
   render() {
