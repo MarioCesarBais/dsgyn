@@ -85,27 +85,42 @@ a:hover {
   height: 100%;
 }
 
-@media (max-width: 950px) {
+/* @media (max-width: 950px) {
+  .app > a {
+    display: none;
+  }
   #right {
     display: none;
   }
   #logo-div {
     display: none;
   }
+  #log {
+
+  }
+  .app > .menu-area {
+    display: flex;
+  }
+  .app > .menu-area > .menu {
+    display: flex;
+  }
+
   .app {
     grid-template-rows:
       var(--header-height)
-      var(--aside-height)
+      var(--logo-height)
+      var(--logo-height)
       1fr
       var(--footer-height);
-    grid-template-columns: var(--aside-width) 1fr;
+    grid-template-columns: 1fr;
     grid-template-areas:
-      "log banner"
-      "menu menu"
-      "content content"
-      "footer footer";
+      "banner"
+      "log"
+      "menu"
+      "content"
+      "footer";
   }
-}
+} */
 
 /* .content > .Card > .Content {
   display: contents;
