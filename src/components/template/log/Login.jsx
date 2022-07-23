@@ -29,6 +29,7 @@ const Login = (props) => {
         );
         localStorage.setItem("user", email)
         props.logged(email)
+        if(response.data.adm) localStorage.setItem('adm', true)
         setError("");
         setEmail("");
         setPassword("");

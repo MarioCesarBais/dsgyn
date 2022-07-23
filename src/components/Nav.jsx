@@ -7,15 +7,42 @@ import {
   faAddressCard,
   faCalendarDays,
   faFileLines,
-  faBars
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
+import jwt_decode from "jwt-decode";
 
 import Back from "../layout/Back";
 import "./nav.css";
 
+// import { isLoggedInF } from "./template/log/Log";
+
+function isLoggedIn() {
+  const login = localStorage.getItem("login");
+  if (!login) {
+    localStorage.clear();
+    return false;
+  }
+  const token = JSON.parse(login).token;
+  if (!token) {
+    localStorage.clear();
+    return false;
+  }
+  let decoded;
+  try {
+    decoded = jwt_decode(token);
+  } catch (e) {
+    localStorage.clear();
+    decoded = false;
+    alert("Token Inválido");
+    return false;
+  }
+  if (decoded) return true;
+}
+
 export default () => {
   const [isActive, setIsActive] = useState(false);
   const onClick = () => setIsActive(!isActive);
+  const adm = localStorage.adm && isLoggedIn();
 
   return (
     <aside className="menu-area">
