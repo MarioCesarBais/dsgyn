@@ -38,6 +38,7 @@
 
 #log {
   grid-area: log;
+
 }
 
 #logo-div {
@@ -78,7 +79,11 @@ footer {
 
 a:hover { background-color: aqua;}
 
-@media (max-width: 950px) {
+.content > .Cards > .Card {
+  height: 100%;
+}
+
+/* @media (max-width: 950px) {
   #right {
     display: none;
   }
@@ -97,6 +102,15 @@ a:hover { background-color: aqua;}
       "footer footer";
   }
 }
+
+.content {
+  display: contents;
+  overflow: hidden;
+} */
+
+/* .content > .Card > .Content {
+  display: contents;
+} */
 
 /* @media (max-width: 576px) {
   #banner > img {

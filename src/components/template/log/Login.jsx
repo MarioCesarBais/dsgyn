@@ -47,7 +47,7 @@ const Login = (props) => {
   else
     return (
       <Card titulo='Login' color='aqua'>
-        <div className="d-flex justify-content-center flex-column">
+        <div className="">
         {error && <p style={{ color: "red" }}>{error}</p>}
         <form
           noValidate
