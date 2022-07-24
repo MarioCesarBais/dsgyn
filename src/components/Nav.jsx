@@ -38,18 +38,16 @@ function isLoggedIn() {
   if (decoded) return true;
 }
 
-function Nav(props) {
-  console.log(props)
-  const user = 
-    (props && props.state && props.state.user && props.state.user.userLogged) ?
-    props.state.user.userLogged : null
-  console.log(user)
-  const adm = localStorage.adm && isLoggedIn();
-  useEffect((user) => {if(!user){}}, [{display: false}])
-  useEffect((user) => {if(user && adm){}}, [{display: true}])
+function Nav() {
+  const adm = (localStorage.adm && isLoggedIn()) == true
+  const [display, setDisplay] = useState('d-none')
+  useEffect(function() {
+    if(adm) setDisplay('')
+    else setDisplay('d-none')
+  }, [adm])
   const [isActive, setIsActive] = useState(false);
   const onClick = () => setIsActive(!isActive);
-  const display = (adm ? '' : 'd-none')
+  
 
   return (
     <aside className="menu-area">
@@ -87,13 +85,16 @@ function Nav(props) {
         >
           <ul>
             <li>
-              <Link to="/crudeventos"> Eventos</Link>
+              <Link to="/crudeventos"
+                onClick={onClick}> Eventos</Link>
             </li>
             <li>
-              <Link to="/crudnoticias"> Notícias</Link>
+              <Link to="/crudnoticias"
+                onClick={onClick}> Notícias</Link>
             </li>
             <li>
-              <Link to="/crudartigos"> Artigos</Link>
+              <Link to="/crudartigos"
+                onClick={onClick}> Artigos</Link>
             </li>
           </ul>
         </nav>

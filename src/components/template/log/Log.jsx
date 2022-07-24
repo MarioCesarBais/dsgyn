@@ -123,3 +123,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(LoginControl);
+
+// export default LoginControl
