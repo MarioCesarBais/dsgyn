@@ -46,8 +46,10 @@ function Nav() {
     else setDisplay('d-none')
   }, [adm])
   const [isActive, setIsActive] = useState(false);
-  const onClick = () => setIsActive(!isActive);
-  
+  const onClick = () => {
+    setIsActive(!isActive);
+    // if(!isActive) <Navigate replace to="/" />
+  }
 
   return (
     <aside className="menu-area">
@@ -105,7 +107,7 @@ function Nav() {
 };
 
 function mapStateToProps(state) {
-  return { state };
+  return state;
 }
 
 export default connect(mapStateToProps)(Nav)

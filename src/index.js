@@ -1,13 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
-import "../node_modules/font-awesome/css/font-awesome.min.css"; // or the following
-// import 'font-awesome/css/font-awesome.min.css';
-// import { applyMiddleware, createStore } from 'redux'
-// import { Provider } from 'react-redux'
-// import promise from 'redux-promise'
-// import multi from 'redux-multi'
-// import thunk from 'redux-thunk'
+import "../node_modules/font-awesome/css/font-awesome.min.css";
 
 import { Provider } from "react-redux";
 
@@ -15,7 +9,6 @@ import storeConfig from "./store/storeConfig";
 
 import "./index.css";
 import App from "./main/App";
-// import { combineReducers } from 'redux';
 
 const store = storeConfig();
 
