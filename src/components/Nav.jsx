@@ -38,8 +38,7 @@ function isLoggedIn() {
   if (decoded) return true;
 }
 
-function Nav(props) {
-  console.log(props)
+function Nav() {
   const adm = (localStorage.adm && isLoggedIn()) == true
   const [display, setDisplay] = useState('d-none')
   useEffect(function() {

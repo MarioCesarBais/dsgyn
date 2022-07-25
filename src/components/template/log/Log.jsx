@@ -98,7 +98,7 @@ class LoginControl extends Component {
   handleLogoutClick() {
     this.setState({ isLoggedIn: false });
     localStorage.clear();
-    this.props.logged('')
+    this.props.logged(null)
   }
 
   render() {
