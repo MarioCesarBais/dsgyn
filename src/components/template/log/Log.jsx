@@ -5,6 +5,7 @@ import jwt_decode from "jwt-decode";
 
 import Card from "../../../layout/Card";
 import './log.css'
+import { alterarLogin } from "../../../store/actions/login";
 
 function UserGreeting() {
   return (
@@ -96,7 +97,8 @@ class LoginControl extends Component {
 
   handleLogoutClick() {
     this.setState({ isLoggedIn: false });
-    localStorage.clear()
+    localStorage.clear();
+    this.props.logged('')
   }
 
   render() {
@@ -119,9 +121,19 @@ class LoginControl extends Component {
 }
 
 function mapStateToProps(state) {
-  return { state };
+  return state;
 }
 
-export default connect(mapStateToProps)(LoginControl);
+function mapDispatchToProps(dispatch) {
+  return {
+    logged() {
+      // action creator -> action
+      const action = alterarLogin(null)
+      dispatch(action)
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginControl);
 
 // export default LoginControl
