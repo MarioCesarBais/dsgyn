@@ -15,7 +15,7 @@ import jwt_decode from "jwt-decode";
 import Back from "../layout/Back";
 import "./nav.css";
 
-function isLoggedIn() {
+export function isLoggedIn() {
   const login = localStorage.getItem("login");
   if (!login) {
     localStorage.clear();

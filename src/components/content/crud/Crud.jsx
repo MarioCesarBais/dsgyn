@@ -1,10 +1,13 @@
 import { Component } from "react";
 import axios from "axios";
 
-import './crud.css'
+import "./crud.css";
 import Main from "../../template/Main";
 
 import { baseUrl, initialState, formattedDate } from "../../../utils/utils";
+import { isLoggedIn } from "../../Nav";
+import Card from "../../../layout/Card";
+// import { Navigate } from "react-router-dom";
 
 class Crud extends Component {
   constructor(props) {
@@ -24,9 +27,11 @@ class Crud extends Component {
 
   save() {
     const evento = this.state.evento;
-    if(!(evento.materia && evento.data && evento.manchete)) return
+    if (!(evento.materia && evento.data && evento.manchete)) return;
     const method = evento.id ? "put" : "post"; //identificar se se trata de salvar novo registro ou atualizá-lo
-    const url = evento.id ? `${baseUrl}/${this.state.props.subject}/${evento.id}` : `${baseUrl}/${this.state.props.subject}`;
+    const url = evento.id
+      ? `${baseUrl}/${this.state.props.subject}/${evento.id}`
+      : `${baseUrl}/${this.state.props.subject}`;
     axios[method](url, evento).then((resp) => {
       const list = this.getUpdatedList(resp.data);
       this.setState({ evento: initialState.evento, list });
@@ -68,8 +73,8 @@ class Crud extends Component {
             <div className="form-group">
               <label>Data</label>
               <input
-              html5='true'
-                as='date'
+                html5="true"
+                as="date"
                 type="date"
                 className="form-control"
                 data-date-format="DD/MM/YYYY"
@@ -126,10 +131,12 @@ class Crud extends Component {
   }
 
   remove(evento) {
-    axios.delete(`${baseUrl}/${this.state.props.subject}/${evento.id}`).then((resp) => {
-      const list = this.getUpdatedList(evento, false);
-      this.setState({ list });
-    });
+    axios
+      .delete(`${baseUrl}/${this.state.props.subject}/${evento.id}`)
+      .then((resp) => {
+        const list = this.getUpdatedList(evento, false);
+        this.setState({ list });
+      });
   }
 
   renderTable() {
@@ -149,33 +156,48 @@ class Crud extends Component {
   }
 
   renderRows() {
-    return this.state.list.slice(0).reverse().map((evento) => {
-      return (
-        <tr key={evento.id}>
-          <td>{evento.id}</td>
-          <td id='manchete'>{evento.manchete}</td>
-          <td>{formattedDate(evento.data)}</td>
-          <td id='botoes'>
-            <button
-              className="btn btn-warning mx-1"
-              onClick={() => this.load(evento)}
-            >
-              <i className="fa fa-pencil"></i>
-            </button>
-            <button
-              className="btn btn-danger"
-              onClick={() => this.remove(evento)}
-            >
-              <i className="fa fa-trash"></i>
-            </button>
-          </td>
-        </tr>
-      );
-    });
+    return this.state.list
+      .slice(0)
+      .reverse()
+      .map((evento) => {
+        return (
+          <tr key={evento.id}>
+            <td>{evento.id}</td>
+            <td id="manchete">{evento.manchete}</td>
+            <td>{formattedDate(evento.data)}</td>
+            <td id="botoes">
+              <button
+                className="btn btn-warning mx-1"
+                onClick={() => this.load(evento)}
+              >
+                <i className="fa fa-pencil"></i>
+              </button>
+              <button
+                className="btn btn-danger"
+                onClick={() => this.remove(evento)}
+              >
+                <i className="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        );
+      });
   }
 
   render() {
-    const s = this.state.props.subject.slice(0, -1) // singular
+    const adm = (localStorage.adm && isLoggedIn()) == true;
+    if (!adm) {
+      alert("Operação Não Autorizada");
+      // <Navigate replace to="/" />;
+      return (
+        <Card titulo="OPERAÇÃO NÃO AUTORIZADA">
+          <h1 className="m-5 p-5 text-danger text-center">
+            Você não está autorizado pela instituição para acessar esta operação!
+          </h1>
+        </Card>
+      );
+    }
+    // const s = this.state.props.subject.slice(0, -1) // singular
     return (
       <Main {...this.state.props.header}>
         {this.renderForm()}
@@ -185,4 +207,4 @@ class Crud extends Component {
   }
 }
 
-export default Crud
+export default Crud;
