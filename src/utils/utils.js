@@ -9,9 +9,9 @@ export function showhide(e) {
   });
 }
 
-export const baseUrl = "http://localhost:3001";
+export const baseUrl = "https://ds-gyn-news.herokuapp.com" || "http://localhost:3001";
 
-export const baseUrlUser = "http://localhost:3002"
+export const baseUrlUser = "https://dsgyn-user.herokuapp.com" || "http://localhost:3002"
 
 const ini = { manchete: "", data: "", materia: "" };
 
